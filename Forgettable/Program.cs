@@ -68,7 +68,7 @@ if (!app.Environment.IsDevelopment())
 app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
-app.MapStaticAssets();
+app.MapStaticAssets().AllowAnonymous();
 app.MapRazorPages().WithStaticAssets();
 app.MapGet("/paperless/thumbnail/{id:int}", async (int id, PaperlessClient paperless) => await paperless.GetThumbnailAsync(id) is byte[] content ? Results.File(content, "image/webp") : Results.NotFound());
 app.Run();
