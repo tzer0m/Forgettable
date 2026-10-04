@@ -51,6 +51,11 @@ namespace Forgettable.Data
         public DbSet<Railcard> Railcards { get; set; }
 
         /// <summary>
+        /// Vehicle insurance policies.
+        /// </summary>
+        public DbSet<VehicleInsurance> VehicleInsurances { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>
