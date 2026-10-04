@@ -43,10 +43,6 @@
             </tr>
             <tr class="collapse" id="details-@item.ItemId">
                 <td colspan="7">
-                    <div class="d-flex gap-2 mb-2">
-                        <a asp-page="/Edit" asp-route-id="@item.ItemId" class="btn btn-sm btn-outline-primary">Edit</a>
-                        <a asp-page="/Delete" asp-route-id="@item.ItemId" class="btn btn-sm btn-outline-danger">Delete</a>
-                    </div>
                     <partial name="Items/_Details" model="item" />
                 </td>
             </tr>

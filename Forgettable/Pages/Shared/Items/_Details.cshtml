@@ -3,6 +3,10 @@
 
 <div class="d-flex gap-3">
     <div class="item-details flex-grow-1">
+        <div class="d-flex gap-2 mb-2">
+            <a asp-page="/Edit" asp-route-id="@Model.ItemId" class="btn btn-sm btn-outline-primary">Edit</a>
+            <a asp-page="/Delete" asp-route-id="@Model.ItemId" class="btn btn-sm btn-outline-danger">Delete</a>
+        </div>
         <dl class="row mb-0">
             <dt class="col-sm-3">Type</dt>
             <dd class="col-sm-9">@ItemTypes.GetDisplayName(Model.GetType())</dd>
@@ -21,7 +25,7 @@
     </div>
     @if (Model.PaperlessDocumentIds.Count > 0)
     {
-        <div class="document-thumbnails d-flex align-items-start gap-2">
+        <div class="document-thumbnails d-flex flex-shrink-0 align-items-start gap-2">
             @foreach (int documentId in Model.PaperlessDocumentIds)
             {
                 <a href="@Paperless.GetDocumentUrl(documentId)" target="_blank" rel="noopener">

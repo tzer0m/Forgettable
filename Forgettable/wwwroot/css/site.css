@@ -37,4 +37,5 @@ tr.collapsing {
 .document-thumbnail {
   height: 120px;
   width: auto;
+  max-width: none;
 }
