@@ -29,3 +29,7 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+/* Table rows can't animate height, so skip the collapse transition to avoid a delayed snap. */
+tr.collapsing {
+  transition: none;
+}

@@ -1,5 +1,4 @@
 ﻿@page
-@using Forgettable.Models
 @model IndexModel
 @{
     ViewData["Title"] = "Dashboard";
@@ -15,31 +14,21 @@
             <th>Days Left</th>
             <th>Expiry</th>
             <th>Auto Renew</th>
-            <th>Details</th>
         </tr>
     </thead>
     <tbody>
         @foreach (Item item in Model.Items)
         {
-            <tr>
+            <tr role="button" data-bs-toggle="collapse" data-bs-target="#details-@item.ItemId" aria-expanded="false" aria-controls="details-@item.ItemId">
                 <td>@item.Name</td>
                 <td>@item.DueDate.ToString("dd MMM yyyy")</td>
                 <td>@(item.DueDate.DayNumber - today.DayNumber)</td>
                 <td>@item.ExpiryDate.ToString("dd MMM yyyy")</td>
                 <td>@(item.AutoRenew ? "Yes" : "No")</td>
-                <td>
-                    @switch (item)
-                    {
-                        case Passport passport:
-                            <span></span>
-                            break;
-                        case DrivingLicence licence:
-                            <span>Driver number: @licence.DriverNumber</span>
-                            break;
-                        case Mot mot:
-                            <span>@mot.Registration</span>
-                            break;
-                    }
+            </tr>
+            <tr class="collapse" id="details-@item.ItemId">
+                <td colspan="5">
+                    <partial name="Items/_@(item.GetType().Name)" model="item" />
                 </td>
             </tr>
         }
