@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Forgettable.Models
+namespace Forgettable.Models.Items
 {
     /// <summary>
     /// A passport.

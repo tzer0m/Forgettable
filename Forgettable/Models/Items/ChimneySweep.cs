@@ -1,6 +1,6 @@
 using System.ComponentModel;
 
-namespace Forgettable.Models
+namespace Forgettable.Models.Items
 {
     /// <summary>
     /// A chimney sweep.

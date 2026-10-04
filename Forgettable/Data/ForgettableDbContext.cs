@@ -1,4 +1,5 @@
 using Forgettable.Models;
+using Forgettable.Models.Items;
 using Microsoft.EntityFrameworkCore;
 
 namespace Forgettable.Data

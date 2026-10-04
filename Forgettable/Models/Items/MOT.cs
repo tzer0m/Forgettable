@@ -1,4 +1,4 @@
-namespace Forgettable.Models
+namespace Forgettable.Models.Items
 {
     /// <summary>
     /// A vehicle's MOT.
