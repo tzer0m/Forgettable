@@ -76,6 +76,11 @@ namespace Forgettable.Data
         public DbSet<Mortgage> Mortgages { get; set; }
 
         /// <summary>
+        /// Boiler services.
+        /// </summary>
+        public DbSet<BoilerService> BoilerServices { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>
