@@ -22,5 +22,10 @@ namespace Forgettable.Models
         /// The passport is due from its effective expiry date.
         /// </summary>
         public override DateOnly DueDate => EffectiveExpiryDate;
+
+        /// <summary>
+        /// Why the passport is due early.
+        /// </summary>
+        public override string? DueDateReason => "Many countries require at least 6 months of passport validity to enter.";
     }
 }

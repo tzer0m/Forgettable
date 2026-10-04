@@ -19,5 +19,10 @@ namespace Forgettable.Models
         /// The MOT is due from the earliest test date.
         /// </summary>
         public override DateOnly DueDate => EarliestTestDate;
+
+        /// <summary>
+        /// Why the MOT is due early.
+        /// </summary>
+        public override string? DueDateReason => "An MOT can be done up to a month minus a day early and still keep the same renewal date.";
     }
 }

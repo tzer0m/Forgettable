@@ -39,3 +39,8 @@ tr.collapsing {
   width: auto;
   max-width: none;
 }
+
+.hover-help {
+  text-decoration: underline dotted;
+  cursor: help;
+}

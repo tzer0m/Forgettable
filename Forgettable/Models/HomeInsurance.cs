@@ -29,5 +29,10 @@ namespace Forgettable.Models
         /// Home insurance is due from the shop around date.
         /// </summary>
         public override DateOnly DueDate => ShopAroundDate;
+
+        /// <summary>
+        /// Why home insurance is due early.
+        /// </summary>
+        public override string? DueDateReason => "Quotes from other providers are usually cheapest 3-4 weeks before renewal.";
     }
 }

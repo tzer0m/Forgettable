@@ -55,5 +55,10 @@ namespace Forgettable.Models
         /// The date that matters for this item type, defaulting to the expiry date.
         /// </summary>
         public virtual DateOnly DueDate => ExpiryDate;
+
+        /// <summary>
+        /// Why the due date differs from the expiry date, if it does.
+        /// </summary>
+        public virtual string? DueDateReason => null;
     }
 }
