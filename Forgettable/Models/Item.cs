@@ -24,5 +24,10 @@ namespace Forgettable.Models
         /// Whether the item auto-renews.
         /// </summary>
         public bool AutoRenew { get; set; } = false;
+
+        /// <summary>
+        /// The date that matters for this item type, defaulting to the expiry date.
+        /// </summary>
+        public virtual DateOnly DueDate => ExpiryDate;
     }
 }

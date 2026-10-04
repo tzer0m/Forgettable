@@ -11,8 +11,9 @@
     <thead>
         <tr>
             <th>Name</th>
-            <th>Expiry</th>
+            <th>Due</th>
             <th>Days Left</th>
+            <th>Expiry</th>
             <th>Auto Renew</th>
             <th>Details</th>
         </tr>
@@ -22,20 +23,21 @@
         {
             <tr>
                 <td>@item.Name</td>
+                <td>@item.DueDate.ToString("dd MMM yyyy")</td>
+                <td>@(item.DueDate.DayNumber - today.DayNumber)</td>
                 <td>@item.ExpiryDate.ToString("dd MMM yyyy")</td>
-                <td>@(item.ExpiryDate.DayNumber - today.DayNumber)</td>
                 <td>@(item.AutoRenew ? "Yes" : "No")</td>
                 <td>
                     @switch (item)
                     {
                         case Passport passport:
-                            <span>Effective expiry: @passport.EffectiveExpiryDate.ToString("dd MMM yyyy")</span>
+                            <span></span>
                             break;
                         case DrivingLicence licence:
                             <span>Driver number: @licence.DriverNumber</span>
                             break;
                         case Mot mot:
-                            <span>@mot.Registration, earliest test: @mot.EarliestTestDate.ToString("dd MMM yyyy")</span>
+                            <span>@mot.Registration</span>
                             break;
                     }
                 </td>

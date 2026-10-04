@@ -14,5 +14,10 @@ namespace Forgettable.Models
         /// The earliest test date that keeps the current anniversary date.
         /// </summary>
         public DateOnly EarliestTestDate => ExpiryDate.AddMonths(-1).AddDays(1);
+
+        /// <summary>
+        /// The MOT is due from the earliest test date.
+        /// </summary>
+        public override DateOnly DueDate => EarliestTestDate;
     }
 }

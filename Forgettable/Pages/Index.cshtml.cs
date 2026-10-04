@@ -9,7 +9,7 @@ namespace Forgettable.Pages
     public class IndexModel : PageModel
     {
         /// <summary>
-        /// The items to display, soonest expiry first.
+        /// The items to display, soonest due first.
         /// </summary>
         public List<Item> Items { get; set; } = [];
 
@@ -24,7 +24,7 @@ namespace Forgettable.Pages
                 new DrivingLicence { ItemId = 2, Name = "Tom's Driving Licence", ExpiryDate = new DateOnly(2029, 8, 2), DriverNumber = "ODDY9801010T99AB" },
                 new Mot { ItemId = 3, Name = "Car MOT", ExpiryDate = new DateOnly(2026, 11, 20), Registration = "AB12 CDE" }
             ];
-            Items = [.. items.OrderBy(x => x.ExpiryDate)];
+            Items = [.. items.OrderBy(x => x.DueDate)];
         }
     }
 }
