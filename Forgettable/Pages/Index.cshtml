@@ -2,7 +2,6 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Dashboard";
-    DateOnly today = DateOnly.FromDateTime(DateTime.Today);
 }
 
 <div class="d-flex justify-content-between align-items-center mb-3">
@@ -28,7 +27,7 @@
             <th>Type</th>
             <th>Subject</th>
             <th>Due</th>
-            <th>Days Left</th>
+            <th>Time Left</th>
             <th>Booked</th>
             <th>Auto Renew</th>
         </tr>
@@ -41,7 +40,7 @@
                 <td>@ItemTypes.GetDisplayName(item.GetType())</td>
                 <td>@item.Subject</td>
                 <td>@item.DueDate.ToString("dd MMM yyyy")</td>
-                <td>@(item.DueDate.DayNumber - today.DayNumber)</td>
+                <td>@TimeLeft.Describe(item.DueDate)</td>
                 <td><partial name="_YesNo" model="item.Booked" /></td>
                 <td><partial name="_YesNo" model="item.AutoRenew" /></td>
             </tr>
