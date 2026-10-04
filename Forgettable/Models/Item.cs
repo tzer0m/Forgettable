@@ -14,9 +14,9 @@ namespace Forgettable.Models
         public int ItemId { get; set; }
 
         /// <summary>
-        /// The item's name.
+        /// Who or what the item is for, e.g. a person, vehicle or domain.
         /// </summary>
-        public string Name { get; set; } = string.Empty;
+        public string Subject { get; set; } = string.Empty;
 
         /// <summary>
         /// The date the item expires.

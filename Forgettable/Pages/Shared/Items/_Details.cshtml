@@ -10,8 +10,8 @@
         <dl class="row mb-0">
             <dt class="col-sm-3">Type</dt>
             <dd class="col-sm-9">@ItemTypes.GetDisplayName(Model.GetType())</dd>
-            <dt class="col-sm-3">Name</dt>
-            <dd class="col-sm-9">@Model.Name</dd>
+            <dt class="col-sm-3">Subject</dt>
+            <dd class="col-sm-9">@Model.Subject</dd>
             <dt class="col-sm-3">Due Date</dt>
             <dd class="col-sm-9">@Model.DueDate.ToString("dd MMM yyyy")</dd>
             @if (Model.ExpiryDate != Model.DueDate)

@@ -21,7 +21,7 @@
     <thead>
         <tr>
             <th>Type</th>
-            <th>Name</th>
+            <th>Subject</th>
             <th>Due</th>
             <th>Days Left</th>
             <th>Booked</th>
@@ -33,7 +33,7 @@
         {
             <tr role="button" data-bs-toggle="collapse" data-bs-target="#details-@item.ItemId" aria-expanded="false" aria-controls="details-@item.ItemId">
                 <td>@ItemTypes.GetDisplayName(item.GetType())</td>
-                <td>@item.Name</td>
+                <td>@item.Subject</td>
                 <td>@item.DueDate.ToString("dd MMM yyyy")</td>
                 <td>@(item.DueDate.DayNumber - today.DayNumber)</td>
                 <td><partial name="_YesNo" model="item.Booked" /></td>
