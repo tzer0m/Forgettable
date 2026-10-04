@@ -9,8 +9,16 @@ builder.Services.AddDbContext<ForgettableDbContext>(options => options.UseNpgsql
 builder.Services.Configure<PaperlessOptions>(builder.Configuration.GetSection("Paperless"));
 builder.Services.AddHttpClient<PaperlessClient>();
 
-// Create the web application and configure.
+// Create the web application.
 WebApplication app = builder.Build();
+
+// Apply any pending database migrations.
+using (IServiceScope scope = app.Services.CreateScope())
+{
+    scope.ServiceProvider.GetRequiredService<ForgettableDbContext>().Database.Migrate();
+}
+
+// Configure the request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
