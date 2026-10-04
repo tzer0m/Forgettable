@@ -1,12 +1,15 @@
+using Forgettable.Data;
 using Forgettable.Models;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace Forgettable.Pages
 {
     /// <summary>
     /// Page model for the dashboard.
     /// </summary>
-    public class IndexModel : PageModel
+    /// <param name="db">The database context.</param>
+    public class IndexModel(ForgettableDbContext db) : PageModel
     {
         /// <summary>
         /// The items to display, soonest due first.
@@ -14,16 +17,11 @@ namespace Forgettable.Pages
         public List<Item> Items { get; set; } = [];
 
         /// <summary>
-        /// Loads the dashboard with sample items until the database is in place.
+        /// Loads all items from the database.
         /// </summary>
-        public void OnGet()
+        public async Task OnGetAsync()
         {
-            List<Item> items =
-            [
-                new Passport { ItemId = 1, Name = "Tom's Passport", ExpiryDate = new DateOnly(2031, 3, 14) },
-                new DrivingLicence { ItemId = 2, Name = "Tom's Driving Licence", ExpiryDate = new DateOnly(2029, 8, 2), DriverNumber = "ODDY9801010T99AB" },
-                new Mot { ItemId = 3, Name = "Car MOT", ExpiryDate = new DateOnly(2026, 11, 20), Registration = "AB12 CDE" }
-            ];
+            List<Item> items = await db.Items.AsNoTracking().ToListAsync();
             Items = [.. items.OrderBy(x => x.DueDate)];
         }
     }

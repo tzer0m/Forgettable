@@ -3,7 +3,7 @@ namespace Forgettable.Models
     /// <summary>
     /// A vehicle's MOT.
     /// </summary>
-    public class Mot : Item
+    public class MOT : Item
     {
         /// <summary>
         /// The vehicle's registration number.
