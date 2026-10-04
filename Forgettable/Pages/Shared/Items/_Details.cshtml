@@ -26,15 +26,10 @@
         </dl>
         <partial name="Items/Details/_@(Model.GetType().Name)" model="Model" />
     </div>
-    @if (Model.PaperlessDocumentIds.Count > 0)
+    @if (Model.PaperlessDocumentId is int documentId)
     {
-        <div class="document-thumbnails d-flex flex-shrink-0 align-items-start gap-2">
-            @foreach (int documentId in Model.PaperlessDocumentIds)
-            {
-                <a href="@Paperless.GetDocumentUrl(documentId)" target="_blank" rel="noopener">
-                    <img src="/paperless/thumbnail/@documentId" alt="Paperless document @documentId" class="img-thumbnail document-thumbnail" loading="lazy" />
-                </a>
-            }
-        </div>
+        <a href="@Paperless.GetDocumentUrl(documentId)" target="_blank" rel="noopener" class="flex-shrink-0">
+            <img src="/paperless/thumbnail/@documentId" alt="Paperless document @documentId" class="img-thumbnail document-thumbnail" loading="lazy" />
+        </a>
     }
 </div>

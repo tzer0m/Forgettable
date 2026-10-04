@@ -13,9 +13,9 @@
 </div>
 <partial name="Items/Form/_@(Model.GetType().Name)" model="Model" />
 <div class="mb-3">
-    <label asp-for="PaperlessDocuments" class="form-label"></label>
-    <input asp-for="PaperlessDocuments" class="form-control" />
-    <div class="form-text">Paperless document IDs, separated by commas (e.g. 12,45).</div>
+    <label asp-for="PaperlessDocumentId" class="form-label"></label>
+    <input asp-for="PaperlessDocumentId" class="form-control" />
+    <span asp-validation-for="PaperlessDocumentId" class="text-danger"></span>
 </div>
 <div class="form-check mb-3">
     <input asp-for="Booked" class="form-check-input" />

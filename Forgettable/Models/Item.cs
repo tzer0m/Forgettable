@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Forgettable.Models
 {
@@ -36,20 +35,10 @@ namespace Forgettable.Models
         public bool AutoRenew { get; set; } = false;
 
         /// <summary>
-        /// The IDs of linked Paperless documents.
+        /// The ID of the linked Paperless document, if any.
         /// </summary>
-        public List<int> PaperlessDocumentIds { get; set; } = [];
-
-        /// <summary>
-        /// The linked Paperless document IDs as a comma-separated list, for the form.
-        /// </summary>
-        [NotMapped]
-        [Display(Name = "Paperless Documents")]
-        public string? PaperlessDocuments
-        {
-            get => string.Join(",", PaperlessDocumentIds);
-            set => PaperlessDocumentIds = [.. (value ?? string.Empty).Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).Select(int.Parse).Distinct()];
-        }
+        [Display(Name = "Paperless Document")]
+        public int? PaperlessDocumentId { get; set; }
 
         /// <summary>
         /// The date that matters, falling back to the expiry date once booked.
