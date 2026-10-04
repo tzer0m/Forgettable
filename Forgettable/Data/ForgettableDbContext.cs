@@ -86,6 +86,11 @@ namespace Forgettable.Data
         public DbSet<EnergyTariff> EnergyTariffs { get; set; }
 
         /// <summary>
+        /// Phone contracts.
+        /// </summary>
+        public DbSet<PhoneContract> PhoneContracts { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>
