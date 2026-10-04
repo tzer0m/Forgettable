@@ -15,13 +15,13 @@ namespace Forgettable.Models.Items
         /// <summary>
         /// The type of railcard, e.g. 26-30 or Two Together.
         /// </summary>
-        [Display(Name = "Railcard Type")]
+        [Display(Name = "Type")]
         public string RailcardType { get; set; } = string.Empty;
 
         /// <summary>
         /// The railcard number.
         /// </summary>
-        [Display(Name = "Railcard Number")]
+        [Display(Name = "Number")]
         public string RailcardNumber { get; set; } = string.Empty;
 
         /// <summary>
