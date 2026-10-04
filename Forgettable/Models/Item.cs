@@ -23,6 +23,11 @@ namespace Forgettable.Models
         public abstract Category Category { get; }
 
         /// <summary>
+        /// The date that matters, falling back to the expiry date once booked.
+        /// </summary>
+        public DateOnly DueDate => Booked ? ExpiryDate : UnbookedDueDate;
+
+        /// <summary>
         /// The date the item expires.
         /// </summary>
         [Display(Name = "Expiry Date")]
@@ -49,11 +54,6 @@ namespace Forgettable.Models
         /// </summary>
         [Display(Name = "Paperless Document")]
         public int? PaperlessDocumentId { get; set; }
-
-        /// <summary>
-        /// The date that matters, falling back to the expiry date once booked.
-        /// </summary>
-        public DateOnly DueDate => Booked ? ExpiryDate : UnbookedDueDate;
 
         /// <summary>
         /// The date that matters for this item type before it's booked, defaulting to the expiry date.
