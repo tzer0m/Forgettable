@@ -6,6 +6,11 @@ namespace Forgettable.Models
     public class MOT : Item
     {
         /// <summary>
+        /// The item's category.
+        /// </summary>
+        public override Category Category => Category.Vehicle;
+
+        /// <summary>
         /// The vehicle's registration number.
         /// </summary>
         public string Registration { get; set; } = string.Empty;

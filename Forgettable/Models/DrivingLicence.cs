@@ -10,6 +10,11 @@ namespace Forgettable.Models
     public class DrivingLicence : Item
     {
         /// <summary>
+        /// The item's category.
+        /// </summary>
+        public override Category Category => Category.Travel;
+
+        /// <summary>
         /// The licence number.
         /// </summary>
         [Display(Name = "Licence Number")]

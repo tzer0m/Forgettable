@@ -10,6 +10,11 @@ namespace Forgettable.Models
     public class HomeInsurance : Item
     {
         /// <summary>
+        /// The item's category.
+        /// </summary>
+        public override Category Category => Category.Property;
+
+        /// <summary>
         /// The insurance provider.
         /// </summary>
         public string Provider { get; set; } = string.Empty;

@@ -8,6 +8,11 @@ namespace Forgettable.Models
     public class Passport : Item
     {
         /// <summary>
+        /// The item's category.
+        /// </summary>
+        public override Category Category => Category.Travel;
+
+        /// <summary>
         /// The passport number.
         /// </summary>
         [Display(Name = "Passport Number")]

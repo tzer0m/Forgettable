@@ -10,9 +10,13 @@
     <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Add</button>
         <ul class="dropdown-menu dropdown-menu-end">
-            @foreach (KeyValuePair<string, Type> itemType in ItemTypes.All)
+            @foreach (IGrouping<Category, Type> group in ItemTypes.All.Values.GroupBy(ItemTypes.GetCategory).OrderBy(x => x.Key))
             {
-                <li><a class="dropdown-item" asp-page="/Add" asp-route-type="@itemType.Key">@ItemTypes.GetDisplayName(itemType.Value)</a></li>
+                <li><h6 class="dropdown-header"><span class="badge category-@group.Key.ToString().ToLower()">@group.Key</span></h6></li>
+                @foreach (Type itemType in group)
+                {
+                    <li><a class="dropdown-item" asp-page="/Add" asp-route-type="@itemType.Name">@ItemTypes.GetDisplayName(itemType)</a></li>
+                }
             }
         </ul>
     </div>
@@ -20,6 +24,7 @@
 <table class="table">
     <thead>
         <tr>
+            <th>Category</th>
             <th>Type</th>
             <th>Subject</th>
             <th>Due</th>
@@ -32,6 +37,7 @@
         @foreach (Item item in Model.Items)
         {
             <tr role="button" data-bs-toggle="collapse" data-bs-target="#details-@item.ItemId" aria-expanded="false" aria-controls="details-@item.ItemId">
+                <td><span class="badge category-@item.Category.ToString().ToLower()">@item.Category</span></td>
                 <td>@ItemTypes.GetDisplayName(item.GetType())</td>
                 <td>@item.Subject</td>
                 <td>@item.DueDate.ToString("dd MMM yyyy")</td>
@@ -40,7 +46,7 @@
                 <td><partial name="_YesNo" model="item.AutoRenew" /></td>
             </tr>
             <tr class="collapse" id="details-@item.ItemId">
-                <td colspan="6">
+                <td colspan="7">
                     <partial name="Items/_Details" model="item" />
                 </td>
             </tr>

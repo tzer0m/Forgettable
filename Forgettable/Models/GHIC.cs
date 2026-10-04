@@ -8,6 +8,11 @@ namespace Forgettable.Models
     public class GHIC : Item
     {
         /// <summary>
+        /// The item's category.
+        /// </summary>
+        public override Category Category => Category.Travel;
+
+        /// <summary>
         /// The personal ID number on the card.
         /// </summary>
         [Display(Name = "Personal ID Number")]

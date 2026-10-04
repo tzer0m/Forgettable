@@ -18,6 +18,11 @@ namespace Forgettable.Models
         public string Subject { get; set; } = string.Empty;
 
         /// <summary>
+        /// The category this item type belongs to.
+        /// </summary>
+        public abstract Category Category { get; }
+
+        /// <summary>
         /// The date the item expires.
         /// </summary>
         [Display(Name = "Expiry Date")]

@@ -9,6 +9,11 @@ namespace Forgettable.Models
     public class ChimneySweep : Item
     {
         /// <summary>
+        /// The item's category.
+        /// </summary>
+        public override Category Category => Category.Property;
+
+        /// <summary>
         /// The date to book the sweep, 2 months before it's due.
         /// </summary>
         public DateOnly BookByDate => ExpiryDate.AddMonths(-2);

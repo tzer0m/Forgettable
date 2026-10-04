@@ -8,6 +8,11 @@ namespace Forgettable.Models
     public class Railcard : Item
     {
         /// <summary>
+        /// The item's category.
+        /// </summary>
+        public override Category Category => Category.Travel;
+
+        /// <summary>
         /// The type of railcard, e.g. 26-30 or Two Together.
         /// </summary>
         [Display(Name = "Railcard Type")]

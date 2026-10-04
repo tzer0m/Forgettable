@@ -21,5 +21,14 @@ namespace Forgettable.Models
         {
             return type.GetCustomAttribute<DisplayNameAttribute>()?.DisplayName ?? type.Name;
         }
+
+        /// <summary>
+        /// Returns the category for an item type.
+        /// </summary>
+        /// <param name="type">The item type.</param>
+        public static Category GetCategory(Type type)
+        {
+            return ((Item)Activator.CreateInstance(type)!).Category;
+        }
     }
 }
