@@ -8,23 +8,113 @@ html {
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+/* Dark theme built from the logo colours. */
+:root, [data-bs-theme=dark] {
+  --forgettable-navy: #2d4356;
+  --forgettable-navy-dark: #1f2e3b;
+  --forgettable-navy-darker: #18242f;
+  --forgettable-navy-darkest: #121b23;
+  --forgettable-coral: #fc785e;
+  --forgettable-coral-light: #fb9582;
+  --forgettable-coral-dark: #d1624f;
+  --forgettable-pale: #e1ebf4;
+  --forgettable-grey: #c0c8cf;
+  --bs-body-bg: var(--forgettable-navy-darker);
+  --bs-body-bg-rgb: 24, 36, 47;
+  --bs-body-color: var(--forgettable-pale);
+  --bs-body-color-rgb: 225, 235, 244;
+  --bs-emphasis-color: #f0f5fa;
+  --bs-secondary-color: var(--forgettable-grey);
+  --bs-secondary-bg: var(--forgettable-navy-dark);
+  --bs-tertiary-bg: var(--forgettable-navy-dark);
+  --bs-link-color: var(--forgettable-coral);
+  --bs-link-color-rgb: 252, 120, 94;
+  --bs-link-hover-color: var(--forgettable-coral-light);
+  --bs-link-hover-color-rgb: 251, 149, 130;
+  --bs-border-color: var(--forgettable-navy);
+  --bs-body-font-family: "Nunito", system-ui, sans-serif;
 }
 
-html {
-  position: relative;
-  min-height: 100%;
+.btn-primary {
+  --bs-btn-color: var(--forgettable-navy-darkest);
+  --bs-btn-bg: var(--forgettable-coral);
+  --bs-btn-border-color: var(--forgettable-coral);
+  --bs-btn-hover-color: var(--forgettable-navy-darkest);
+  --bs-btn-hover-bg: var(--forgettable-coral-light);
+  --bs-btn-hover-border-color: var(--forgettable-coral-light);
+  --bs-btn-active-color: var(--forgettable-navy-darkest);
+  --bs-btn-active-bg: var(--forgettable-coral-dark);
+  --bs-btn-active-border-color: var(--forgettable-coral-dark);
+  font-weight: 600;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+.btn-outline-primary {
+  --bs-btn-color: var(--forgettable-coral);
+  --bs-btn-border-color: var(--forgettable-coral);
+  --bs-btn-hover-color: var(--forgettable-navy-darkest);
+  --bs-btn-hover-bg: var(--forgettable-coral);
+  --bs-btn-hover-border-color: var(--forgettable-coral);
+  --bs-btn-active-color: var(--forgettable-navy-darkest);
+  --bs-btn-active-bg: var(--forgettable-coral-dark);
+  --bs-btn-active-border-color: var(--forgettable-coral-dark);
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+.btn-outline-secondary {
+  --bs-btn-color: var(--forgettable-pale);
+  --bs-btn-border-color: var(--forgettable-grey);
+  --bs-btn-hover-color: var(--forgettable-navy-darkest);
+  --bs-btn-hover-bg: var(--forgettable-pale);
+  --bs-btn-hover-border-color: var(--forgettable-pale);
 }
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-select:focus, .form-check-input:focus {
+  border-color: var(--forgettable-coral);
+  box-shadow: 0 0 0 0.25rem rgba(252, 120, 94, 0.4);
+}
+
+.form-check-input:checked {
+  background-color: var(--forgettable-coral);
+  border-color: var(--forgettable-coral);
+}
+
+/* Header with the logo and title. */
+.site-header {
+  background-color: var(--forgettable-navy-darkest);
+  border-bottom: 3px solid var(--forgettable-coral);
+}
+
+.navbar-brand, .navbar-brand:hover, .navbar-brand:focus {
+  color: var(--forgettable-pale);
+  font-weight: 600;
+}
+
+.site-logo {
+  height: 2.25rem;
+  width: auto;
+}
+
+/* Table on the dark page, with a navy header. */
+.table {
+  --bs-table-bg: var(--forgettable-navy-dark);
+  --bs-table-color: var(--forgettable-pale);
+  --bs-table-border-color: var(--forgettable-navy);
+}
+
+.table > thead > tr > th {
+  background-color: var(--forgettable-navy);
+  color: var(--forgettable-pale);
+}
+
+.dropdown-menu {
+  --bs-dropdown-bg: var(--forgettable-navy-dark);
+  --bs-dropdown-border-color: var(--forgettable-navy);
+  --bs-dropdown-link-color: var(--forgettable-pale);
+  --bs-dropdown-link-hover-bg: var(--forgettable-navy);
+  --bs-dropdown-link-hover-color: #fff;
+  --bs-dropdown-link-active-bg: var(--forgettable-coral);
+  --bs-dropdown-link-active-color: var(--forgettable-navy-darkest);
+}
+
 /* Table rows can't animate height, so skip the collapse transition to avoid a delayed snap. */
 tr.collapsing {
   transition: none;
