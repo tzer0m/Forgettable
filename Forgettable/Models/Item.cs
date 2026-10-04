@@ -25,15 +25,15 @@ namespace Forgettable.Models
         public DateOnly ExpiryDate { get; set; }
 
         /// <summary>
+        /// Whether the renewal is already booked in, so no reminder is needed.
+        /// </summary>
+        public bool Booked { get; set; } = false;
+
+        /// <summary>
         /// Whether the item auto-renews.
         /// </summary>
         [Display(Name = "Auto Renew")]
         public bool AutoRenew { get; set; } = false;
-
-        /// <summary>
-        /// Whether the renewal is already booked in, so no reminder is needed.
-        /// </summary>
-        public bool Booked { get; set; } = false;
 
         /// <summary>
         /// The IDs of linked Paperless documents.
