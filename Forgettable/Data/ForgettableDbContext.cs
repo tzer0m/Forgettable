@@ -30,6 +30,11 @@ namespace Forgettable.Data
         public DbSet<MOT> MOTs { get; set; }
 
         /// <summary>
+        /// Chimney sweeps.
+        /// </summary>
+        public DbSet<ChimneySweep> ChimneySweeps { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>
