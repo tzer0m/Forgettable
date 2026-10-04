@@ -134,6 +134,15 @@ tr.collapsing {
 }
 
 /* Category tiles on the dashboard. */
+/* Small category colour dot shown instead of the badge on phones. */
+.category-dot {
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  margin-right: 0.4rem;
+}
+
 .category-travel { background-color: #0d6efd; }
 .category-vehicle { background-color: #fd7e14; }
 .category-property { background-color: #198754; }

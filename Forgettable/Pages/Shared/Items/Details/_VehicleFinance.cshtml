@@ -1,22 +1,22 @@
 ﻿@model VehicleFinance
 
 <dl class="row mb-0">
-    <dt class="col-sm-3">Finance Type</dt>
-    <dd class="col-sm-9">@Model.FinanceType</dd>
-    <dt class="col-sm-3">Lender</dt>
-    <dd class="col-sm-9">@Model.Lender</dd>
-    <dt class="col-sm-3">Agreement Number</dt>
-    <dd class="col-sm-9">@Model.AgreementNumber</dd>
-    <dt class="col-sm-3">Registration</dt>
-    <dd class="col-sm-9">@Model.Registration</dd>
+    <dt class="col-5 col-sm-3">Finance Type</dt>
+    <dd class="col-7 col-sm-9">@Model.FinanceType</dd>
+    <dt class="col-5 col-sm-3">Lender</dt>
+    <dd class="col-7 col-sm-9">@Model.Lender</dd>
+    <dt class="col-5 col-sm-3">Agreement Number</dt>
+    <dd class="col-7 col-sm-9">@Model.AgreementNumber</dd>
+    <dt class="col-5 col-sm-3">Registration</dt>
+    <dd class="col-7 col-sm-9">@Model.Registration</dd>
     @if (Model.HasFinalPayment && Model.FinalPayment is decimal finalPayment)
     {
-        <dt class="col-sm-3">Final Payment</dt>
-        <dd class="col-sm-9">£@finalPayment.ToString("N2")</dd>
+        <dt class="col-5 col-sm-3">Final Payment</dt>
+        <dd class="col-7 col-sm-9">£@finalPayment.ToString("N2")</dd>
     }
     @if (Model.HasMileageAllowance && Model.MileageAllowance is int mileageAllowance)
     {
-        <dt class="col-sm-3">Mileage Allowance</dt>
-        <dd class="col-sm-9">@mileageAllowance.ToString("N0") miles per year</dd>
+        <dt class="col-5 col-sm-3">Mileage Allowance</dt>
+        <dd class="col-7 col-sm-9">@mileageAllowance.ToString("N0") miles per year</dd>
     }
 </dl>

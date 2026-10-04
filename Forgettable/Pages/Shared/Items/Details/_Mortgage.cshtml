@@ -1,13 +1,13 @@
 ﻿@model Mortgage
 
 <dl class="row mb-0">
-    <dt class="col-sm-3">Lender</dt>
-    <dd class="col-sm-9">@Model.Lender</dd>
-    <dt class="col-sm-3">Account Number</dt>
-    <dd class="col-sm-9">@Model.AccountNumber</dd>
+    <dt class="col-5 col-sm-3">Lender</dt>
+    <dd class="col-7 col-sm-9">@Model.Lender</dd>
+    <dt class="col-5 col-sm-3">Account Number</dt>
+    <dd class="col-7 col-sm-9">@Model.AccountNumber</dd>
     @if (Model.Rate is decimal rate)
     {
-        <dt class="col-sm-3">Rate</dt>
-        <dd class="col-sm-9">@rate.ToString("0.##")%</dd>
+        <dt class="col-5 col-sm-3">Rate</dt>
+        <dd class="col-7 col-sm-9">@rate.ToString("0.##")%</dd>
     }
 </dl>
