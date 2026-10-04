@@ -5,7 +5,18 @@
     DateOnly today = DateOnly.FromDateTime(DateTime.Today);
 }
 
-<h1>Dashboard</h1>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="mb-0">Dashboard</h1>
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Add</button>
+        <ul class="dropdown-menu dropdown-menu-end">
+            @foreach (KeyValuePair<string, Type> itemType in ItemTypes.All)
+            {
+                <li><a class="dropdown-item" asp-page="/Add" asp-route-type="@itemType.Key">@ItemTypes.GetDisplayName(itemType.Value)</a></li>
+            }
+        </ul>
+    </div>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -28,7 +39,7 @@
             </tr>
             <tr class="collapse" id="details-@item.ItemId">
                 <td colspan="5">
-                    <partial name="Items/_@(item.GetType().Name)" model="item" />
+                    <partial name="Items/Details/_@(item.GetType().Name)" model="item" />
                 </td>
             </tr>
         }

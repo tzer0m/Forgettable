@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Forgettable.Models
 {
     /// <summary>
@@ -18,11 +20,13 @@ namespace Forgettable.Models
         /// <summary>
         /// The date the item expires.
         /// </summary>
+        [Display(Name = "Expiry Date")]
         public DateOnly ExpiryDate { get; set; }
 
         /// <summary>
         /// Whether the item auto-renews.
         /// </summary>
+        [Display(Name = "Auto Renew")]
         public bool AutoRenew { get; set; } = false;
 
         /// <summary>
