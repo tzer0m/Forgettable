@@ -20,7 +20,16 @@
 <div class="form-check mb-3">
     <input asp-for="Booked" class="form-check-input" />
     <label asp-for="Booked" class="form-check-label"></label>
-</div><div class="form-check mb-3">
+</div>
+<div class="form-check mb-3">
     <input asp-for="AutoRenew" class="form-check-input" />
     <label asp-for="AutoRenew" class="form-check-label"></label>
 </div>
+<script>
+    // Changing the expiry date means a new period, so it's no longer booked unless ticked again.
+    (() => {
+        const form = document.currentScript.closest('form');
+        const booked = form.querySelector('input[type="checkbox"][name$="Booked"]');
+        form.querySelector('input[name$="ExpiryDate"]').addEventListener('change', () => booked.checked = false);
+    })();
+</script>

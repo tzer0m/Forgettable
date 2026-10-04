@@ -52,3 +52,8 @@ tr.collapsing {
 .category-warranties { background-color: #ffc107; color: #212529; }
 .category-work { background-color: #6c757d; }
 .category-health { background-color: #d63384; }
+
+/* Archived items sit at the bottom of the dashboard, greyed out. */
+tr.archived {
+  opacity: 0.5;
+}

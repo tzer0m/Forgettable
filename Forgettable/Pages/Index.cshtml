@@ -5,7 +5,7 @@
 }
 
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h1 class="mb-0">Dashboard</h1>
+    <h1 class="mb-0">@ViewData["Title"]</h1>
     <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Add</button>
         <ul class="dropdown-menu dropdown-menu-end">
@@ -35,14 +35,14 @@
     <tbody>
         @foreach (Item item in Model.Items)
         {
-            <tr role="button" data-bs-toggle="collapse" data-bs-target="#details-@item.ItemId" aria-expanded="false" aria-controls="details-@item.ItemId">
+            <tr role="button" class="@(item.Archived ? "archived" : null)" data-bs-toggle="collapse" data-bs-target="#details-@item.ItemId" aria-expanded="false" aria-controls="details-@item.ItemId">
                 <td><span class="badge category-@item.Category.ToString().ToLower()">@item.Category</span></td>
                 <td>@ItemTypes.GetDisplayName(item.GetType())</td>
                 <td>@item.Subject</td>
                 <td>@item.DueDate.ToString("dd MMM yyyy")</td>
-                <td>@TimeLeft.Describe(item.DueDate)</td>
-                <td><partial name="_YesNo" model="item.Booked" /></td>
-                <td><partial name="_YesNo" model="item.AutoRenew" /></td>
+                <td>@(item.Archived ? null : TimeLeft.Describe(item.DueDate))</td>
+                <td>@if (!item.Archived) { <partial name="_YesNo" model="item.Booked" /> }</td>
+                <td>@if (!item.Archived) { <partial name="_YesNo" model="item.AutoRenew" /> }</td>
             </tr>
             <tr class="collapse" id="details-@item.ItemId">
                 <td colspan="7">

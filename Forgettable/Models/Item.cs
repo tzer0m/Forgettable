@@ -40,6 +40,11 @@ namespace Forgettable.Models
         public bool AutoRenew { get; set; } = false;
 
         /// <summary>
+        /// Whether the item is archived, hiding it from the dashboard and reminders.
+        /// </summary>
+        public bool Archived { get; set; } = false;
+
+        /// <summary>
         /// The ID of the linked Paperless document, if any.
         /// </summary>
         [Display(Name = "Paperless Document")]
