@@ -40,6 +40,11 @@ namespace Forgettable.Data
         public DbSet<HomeInsurance> HomeInsurances { get; set; }
 
         /// <summary>
+        /// Global Health Insurance Cards.
+        /// </summary>
+        public DbSet<GHIC> GHICs { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>
