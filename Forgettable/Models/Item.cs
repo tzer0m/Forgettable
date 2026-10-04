@@ -31,6 +31,11 @@ namespace Forgettable.Models
         public bool AutoRenew { get; set; } = false;
 
         /// <summary>
+        /// Whether the renewal is already booked in, so no reminder is needed.
+        /// </summary>
+        public bool Booked { get; set; } = false;
+
+        /// <summary>
         /// The IDs of linked Paperless documents.
         /// </summary>
         public List<int> PaperlessDocumentIds { get; set; } = [];

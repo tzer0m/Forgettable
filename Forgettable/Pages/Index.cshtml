@@ -26,6 +26,7 @@
             <th>Days Left</th>
             <th>Expiry</th>
             <th>Auto Renew</th>
+            <th>Booked</th>
         </tr>
     </thead>
     <tbody>
@@ -38,9 +39,10 @@
                 <td>@(item.DueDate.DayNumber - today.DayNumber)</td>
                 <td>@item.ExpiryDate.ToString("dd MMM yyyy")</td>
                 <td>@(item.AutoRenew ? "Yes" : "No")</td>
+                <td>@(item.Booked ? "Yes" : "No")</td>
             </tr>
             <tr class="collapse" id="details-@item.ItemId">
-                <td colspan="6">
+                <td colspan="7">
                     <div class="d-flex gap-2 mb-2">
                         <a asp-page="/Edit" asp-route-id="@item.ItemId" class="btn btn-sm btn-outline-primary">Edit</a>
                         <a asp-page="/Delete" asp-route-id="@item.ItemId" class="btn btn-sm btn-outline-danger">Delete</a>
