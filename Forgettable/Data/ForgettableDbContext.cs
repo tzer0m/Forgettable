@@ -35,6 +35,11 @@ namespace Forgettable.Data
         public DbSet<ChimneySweep> ChimneySweeps { get; set; }
 
         /// <summary>
+        /// Home insurance policies.
+        /// </summary>
+        public DbSet<HomeInsurance> HomeInsurances { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>
