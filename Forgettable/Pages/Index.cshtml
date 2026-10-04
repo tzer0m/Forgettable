@@ -19,7 +19,7 @@
     <tbody>
         @foreach (Item item in Model.Items)
         {
-            <tr role="button" class="@(item.Archived ? "archived" : null)" data-bs-toggle="collapse" data-bs-target="#details-@item.ItemId" aria-expanded="false" aria-controls="details-@item.ItemId">
+            <tr id="item-@item.ItemId" role="button" class="@(item.Archived ? "archived" : null)" data-bs-toggle="collapse" data-bs-target="#details-@item.ItemId" aria-expanded="false" aria-controls="details-@item.ItemId">
                 <td class="d-none d-md-table-cell"><span class="badge category-@item.Category.ToString().ToLower()">@item.Category</span></td>
                 <td><span class="category-dot category-@item.Category.ToString().ToLower() d-md-none" title="@item.Category"></span>@ItemTypes.GetDisplayName(item.GetType())</td>
                 <td>@item.Subject</td>
@@ -54,5 +54,15 @@
         document.addEventListener('show.bs.collapse', event => { if (event.target.matches('tr')) { requestAnimationFrame(() => sizeThumbnails(event.target)); } });
         document.addEventListener('load', event => { if (event.target.matches?.('.document-thumbnail')) { sizeThumbnails(event.target.closest('tr')); } }, true);
         window.addEventListener('resize', () => document.querySelectorAll('tr.collapse.show').forEach(sizeThumbnails));
+
+        // Open the item linked to from a calendar event, e.g. /#item-12.
+        const linked = location.hash.match(/^#item-(\d+)$/);
+        if (linked) {
+            const details = document.getElementById(`details-${linked[1]}`);
+            if (details) {
+                bootstrap.Collapse.getOrCreateInstance(details, { toggle: false }).show();
+                document.getElementById(`item-${linked[1]}`).scrollIntoView({ block: 'center' });
+            }
+        }
     </script>
 }

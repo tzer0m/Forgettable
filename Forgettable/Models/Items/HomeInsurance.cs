@@ -17,6 +17,7 @@ namespace Forgettable.Models.Items
         /// <summary>
         /// The insurance provider.
         /// </summary>
+        [Display(Name = "Provider")]
         public string Provider { get; set; } = string.Empty;
 
         /// <summary>
@@ -28,6 +29,7 @@ namespace Forgettable.Models.Items
         /// <summary>
         /// The date to start comparing quotes, 4 weeks before renewal.
         /// </summary>
+        [Display(Name = "Shop Around From")]
         public DateOnly ShopAroundDate => ExpiryDate.AddDays(-28);
 
         /// <summary>

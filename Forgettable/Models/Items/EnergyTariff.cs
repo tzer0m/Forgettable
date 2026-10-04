@@ -17,6 +17,7 @@ namespace Forgettable.Models.Items
         /// <summary>
         /// The energy supplier.
         /// </summary>
+        [Display(Name = "Supplier")]
         public string Supplier { get; set; } = string.Empty;
 
         /// <summary>

@@ -21,6 +21,7 @@ namespace Forgettable.Models.Items
         /// <summary>
         /// The last date the passport has 6 months of validity left.
         /// </summary>
+        [Display(Name = "Effective Expiry")]
         public DateOnly EffectiveExpiryDate => ExpiryDate.AddMonths(-6);
 
         /// <summary>

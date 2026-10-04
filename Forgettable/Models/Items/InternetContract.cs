@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Forgettable.Models.Items
 {
@@ -16,6 +17,7 @@ namespace Forgettable.Models.Items
         /// <summary>
         /// The internet provider.
         /// </summary>
+        [Display(Name = "Provider")]
         public string Provider { get; set; } = string.Empty;
 
         /// <summary>

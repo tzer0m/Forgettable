@@ -15,6 +15,7 @@ namespace Forgettable.Models
         /// <summary>
         /// Who or what the item is for, e.g. a person, vehicle or domain.
         /// </summary>
+        [Display(Name = "Subject")]
         public string Subject { get; set; } = string.Empty;
 
         /// <summary>
@@ -25,6 +26,7 @@ namespace Forgettable.Models
         /// <summary>
         /// The date that matters, falling back to the expiry date once booked.
         /// </summary>
+        [Display(Name = "Due Date")]
         public DateOnly DueDate => Booked ? ExpiryDate : UnbookedDueDate;
 
         /// <summary>
@@ -36,6 +38,7 @@ namespace Forgettable.Models
         /// <summary>
         /// Whether the renewal is already booked in, so no reminder is needed.
         /// </summary>
+        [Display(Name = "Booked")]
         public bool Booked { get; set; } = false;
 
         /// <summary>
@@ -52,7 +55,7 @@ namespace Forgettable.Models
         /// <summary>
         /// The ID of the linked Paperless document, if any.
         /// </summary>
-        [Display(Name = "Paperless Document")]
+        [Display(Name = "Paperless Document", AutoGenerateField = false)]
         public int? PaperlessDocumentId { get; set; }
 
         /// <summary>

@@ -17,6 +17,7 @@ namespace Forgettable.Models.Items
         /// <summary>
         /// The insurance provider.
         /// </summary>
+        [Display(Name = "Provider")]
         public string Provider { get; set; } = string.Empty;
 
         /// <summary>
@@ -28,6 +29,7 @@ namespace Forgettable.Models.Items
         /// <summary>
         /// The registration of the insured vehicle.
         /// </summary>
+        [Display(Name = "Registration")]
         public string Registration { get; set; } = string.Empty;
 
         /// <summary>

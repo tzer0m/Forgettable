@@ -15,6 +15,7 @@ namespace Forgettable.Models.Items
         /// <summary>
         /// The mortgage lender.
         /// </summary>
+        [Display(Name = "Lender")]
         public string Lender { get; set; } = string.Empty;
 
         /// <summary>
@@ -26,6 +27,8 @@ namespace Forgettable.Models.Items
         /// <summary>
         /// The current fixed interest rate, as a percentage.
         /// </summary>
+        [Display(Name = "Rate")]
+        [DisplayFormat(DataFormatString = "{0:0.##}%")]
         public decimal? Rate { get; set; }
 
         /// <summary>

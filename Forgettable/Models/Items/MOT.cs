@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Forgettable.Models.Items
 {
     /// <summary>
@@ -13,11 +15,13 @@ namespace Forgettable.Models.Items
         /// <summary>
         /// The vehicle's registration number.
         /// </summary>
+        [Display(Name = "Registration")]
         public string Registration { get; set; } = string.Empty;
 
         /// <summary>
         /// The earliest test date that keeps the current anniversary date.
         /// </summary>
+        [Display(Name = "Earliest Test")]
         public DateOnly EarliestTestDate => ExpiryDate.AddMonths(-1).AddDays(1);
 
         /// <summary>

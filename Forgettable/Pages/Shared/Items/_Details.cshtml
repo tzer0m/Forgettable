@@ -4,23 +4,25 @@
 <div class="d-flex gap-3">
     <div class="item-details flex-grow-1">
         <dl class="row mb-0">
-            <dt class="col-5 col-sm-3">Type</dt>
-            <dd class="col-7 col-sm-9">@ItemTypes.GetDisplayName(Model.GetType())</dd>
-            <dt class="col-5 col-sm-3">Subject</dt>
-            <dd class="col-7 col-sm-9">@Model.Subject</dd>
-            <dt class="col-5 col-sm-3">Due Date</dt>
-            <dd class="col-7 col-sm-9">@Model.DueDate.ToString("dd MMM yyyy")</dd>
-            @if (Model.ExpiryDate != Model.DueDate)
+            @foreach (ItemDetail detail in ItemDetails.Get(Model))
             {
-                <dt class="col-5 col-sm-3">Expiry Date</dt>
-                <dd class="col-7 col-sm-9"><span class="hover-help" title="@Model.DueDateReason">@Model.ExpiryDate.ToString("dd MMM yyyy")</span></dd>
+                <dt class="col-5 col-sm-3">@detail.Label</dt>
+                <dd class="col-7 col-sm-9">
+                    @if (detail.Value is bool flag)
+                    {
+                        <partial name="_YesNo" model="flag" />
+                    }
+                    else if (detail.Hint != null)
+                    {
+                        <span class="hover-help" title="@detail.Hint">@detail.Text</span>
+                    }
+                    else
+                    {
+                        @detail.Text
+                    }
+                </dd>
             }
-            <dt class="col-5 col-sm-3">Booked</dt>
-            <dd class="col-7 col-sm-9"><partial name="_YesNo" model="Model.Booked" /></dd>
-            <dt class="col-5 col-sm-3">Auto Renew</dt>
-            <dd class="col-7 col-sm-9"><partial name="_YesNo" model="Model.AutoRenew" /></dd>
         </dl>
-        <partial name="Items/Details/_@(Model.GetType().Name)" model="Model" />
         <div class="d-flex flex-wrap gap-2 mt-2">
             @if (Model.PaperlessDocumentId is int buttonDocumentId)
             {

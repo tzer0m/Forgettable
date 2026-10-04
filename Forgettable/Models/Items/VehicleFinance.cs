@@ -23,6 +23,7 @@ namespace Forgettable.Models.Items
         /// <summary>
         /// The finance company.
         /// </summary>
+        [Display(Name = "Lender")]
         public string Lender { get; set; } = string.Empty;
 
         /// <summary>
@@ -34,18 +35,21 @@ namespace Forgettable.Models.Items
         /// <summary>
         /// The vehicle's registration number.
         /// </summary>
+        [Display(Name = "Registration")]
         public string Registration { get; set; } = string.Empty;
 
         /// <summary>
         /// The optional final payment on a PCP agreement.
         /// </summary>
         [Display(Name = "Final Payment")]
+        [DisplayFormat(DataFormatString = "£{0:N2}")]
         public decimal? FinalPayment { get; set; }
 
         /// <summary>
         /// The annual mileage allowance on a PCP or lease agreement.
         /// </summary>
         [Display(Name = "Mileage Allowance")]
+        [DisplayFormat(DataFormatString = "{0:N0} miles per year")]
         public int? MileageAllowance { get; set; }
 
         /// <summary>

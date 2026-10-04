@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@inject Microsoft.Extensions.Options.IOptions<Forgettable.Services.CalendarOptions> CalendarSettings
+<!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="utf-8" />
@@ -24,18 +25,24 @@
                     <img src="~/logo.png" alt="" class="site-logo" width="23" height="36" asp-append-version="true" />
                     Forgettable
                 </a>
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Add</button>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        @foreach (IGrouping<Category, Type> group in ItemTypes.All.Values.GroupBy(ItemTypes.GetCategory).OrderBy(x => x.Key))
-                        {
-                            <li><h6 class="dropdown-header"><span class="badge category-@group.Key.ToString().ToLower()">@group.Key</span></h6></li>
-                            @foreach (Type itemType in group)
+                <div class="d-flex gap-2">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Add</button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            @foreach (IGrouping<Category, Type> group in ItemTypes.All.Values.GroupBy(ItemTypes.GetCategory).OrderBy(x => x.Key))
                             {
-                                <li><a class="dropdown-item" asp-page="/Add" asp-route-type="@itemType.Name">@ItemTypes.GetDisplayName(itemType)</a></li>
+                                <li><h6 class="dropdown-header"><span class="badge category-@group.Key.ToString().ToLower()">@group.Key</span></h6></li>
+                                @foreach (Type itemType in group)
+                                {
+                                    <li><a class="dropdown-item" asp-page="/Add" asp-route-type="@itemType.Name">@ItemTypes.GetDisplayName(itemType)</a></li>
+                                }
                             }
-                        }
-                    </ul>
+                        </ul>
+                    </div>
+                    @if (!string.IsNullOrEmpty(CalendarSettings.Value.Token))
+                    {
+                        <button type="button" class="btn btn-outline-primary" data-calendar-url="/calendar/@(CalendarSettings.Value.Token).ics" onclick="copyCalendarLink(this)">Calendar</button>
+                    }
                 </div>
             </div>
         </nav>
@@ -47,6 +54,15 @@
     </div>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Copy the calendar feed's full address so it can be pasted into a calendar app.
+        function copyCalendarLink(button) {
+            navigator.clipboard.writeText(new URL(button.dataset.calendarUrl, location.origin).href).then(() => {
+                button.textContent = 'Copied';
+                setTimeout(() => button.textContent = 'Calendar', 2000);
+            });
+        }
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
