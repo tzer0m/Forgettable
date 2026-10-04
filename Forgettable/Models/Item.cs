@@ -52,9 +52,14 @@ namespace Forgettable.Models
         }
 
         /// <summary>
-        /// The date that matters for this item type, defaulting to the expiry date.
+        /// The date that matters, falling back to the expiry date once booked.
         /// </summary>
-        public virtual DateOnly DueDate => ExpiryDate;
+        public DateOnly DueDate => Booked ? ExpiryDate : UnbookedDueDate;
+
+        /// <summary>
+        /// The date that matters for this item type before it's booked, defaulting to the expiry date.
+        /// </summary>
+        public virtual DateOnly UnbookedDueDate => ExpiryDate;
 
         /// <summary>
         /// Why the due date differs from the expiry date, if it does.

@@ -18,7 +18,7 @@ namespace Forgettable.Models
         /// <summary>
         /// The MOT is due from the earliest test date.
         /// </summary>
-        public override DateOnly DueDate => EarliestTestDate;
+        public override DateOnly UnbookedDueDate => EarliestTestDate;
 
         /// <summary>
         /// Why the MOT is due early.

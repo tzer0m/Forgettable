@@ -28,7 +28,7 @@ namespace Forgettable.Models
         /// <summary>
         /// Home insurance is due from the shop around date.
         /// </summary>
-        public override DateOnly DueDate => ShopAroundDate;
+        public override DateOnly UnbookedDueDate => ShopAroundDate;
 
         /// <summary>
         /// Why home insurance is due early.

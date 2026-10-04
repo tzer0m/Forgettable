@@ -21,7 +21,7 @@ namespace Forgettable.Models
         /// <summary>
         /// The passport is due from its effective expiry date.
         /// </summary>
-        public override DateOnly DueDate => EffectiveExpiryDate;
+        public override DateOnly UnbookedDueDate => EffectiveExpiryDate;
 
         /// <summary>
         /// Why the passport is due early.

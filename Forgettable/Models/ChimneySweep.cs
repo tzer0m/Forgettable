@@ -16,7 +16,7 @@ namespace Forgettable.Models
         /// <summary>
         /// The chimney sweep is due from the book by date.
         /// </summary>
-        public override DateOnly DueDate => BookByDate;
+        public override DateOnly UnbookedDueDate => BookByDate;
 
         /// <summary>
         /// Why the chimney sweep is due early.
