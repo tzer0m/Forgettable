@@ -34,10 +34,12 @@ tr.collapsing {
   transition: none;
 }
 
+/* Reserve an A4-shaped space until the thumbnail loads, then use its real shape. */
 .document-thumbnail {
   height: 120px;
   width: auto;
   max-width: none;
+  aspect-ratio: auto 210 / 297;
 }
 
 .hover-help {
