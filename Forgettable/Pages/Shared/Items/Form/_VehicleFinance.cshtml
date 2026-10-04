@@ -1,33 +1,45 @@
 ﻿@model VehicleFinance
 
-<div class="mb-3">
-    <label asp-for="FinanceType" class="form-label"></label>
-    <select asp-for="FinanceType" asp-items="Html.GetEnumSelectList<FinanceType>()" class="form-select finance-type"></select>
+<div class="row mb-3">
+    <label asp-for="FinanceType" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <select asp-for="FinanceType" asp-items="Html.GetEnumSelectList<FinanceType>()" class="form-select finance-type"></select>
+    </div>
 </div>
-<div class="mb-3">
-    <label asp-for="Lender" class="form-label"></label>
-    <input asp-for="Lender" class="form-control" />
-    <span asp-validation-for="Lender" class="text-danger"></span>
+<div class="row mb-3">
+    <label asp-for="Lender" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <input asp-for="Lender" class="form-control" />
+        <span asp-validation-for="Lender" class="text-danger"></span>
+    </div>
 </div>
-<div class="mb-3">
-    <label asp-for="AgreementNumber" class="form-label"></label>
-    <input asp-for="AgreementNumber" class="form-control" />
-    <span asp-validation-for="AgreementNumber" class="text-danger"></span>
+<div class="row mb-3">
+    <label asp-for="AgreementNumber" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <input asp-for="AgreementNumber" class="form-control" />
+        <span asp-validation-for="AgreementNumber" class="text-danger"></span>
+    </div>
 </div>
-<div class="mb-3">
-    <label asp-for="Registration" class="form-label"></label>
-    <input asp-for="Registration" class="form-control" />
-    <span asp-validation-for="Registration" class="text-danger"></span>
+<div class="row mb-3">
+    <label asp-for="Registration" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <input asp-for="Registration" class="form-control" />
+        <span asp-validation-for="Registration" class="text-danger"></span>
+    </div>
 </div>
-<div class="mb-3" data-finance-types="PCP">
-    <label asp-for="FinalPayment" class="form-label"></label>
-    <input asp-for="FinalPayment" class="form-control" />
-    <span asp-validation-for="FinalPayment" class="text-danger"></span>
+<div class="row mb-3" data-finance-types="PCP">
+    <label asp-for="FinalPayment" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <input asp-for="FinalPayment" class="form-control" />
+        <span asp-validation-for="FinalPayment" class="text-danger"></span>
+    </div>
 </div>
-<div class="mb-3" data-finance-types="PCP Lease">
-    <label asp-for="MileageAllowance" class="form-label"></label>
-    <input asp-for="MileageAllowance" class="form-control" />
-    <span asp-validation-for="MileageAllowance" class="text-danger"></span>
+<div class="row mb-3" data-finance-types="PCP Lease">
+    <label asp-for="MileageAllowance" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <input asp-for="MileageAllowance" class="form-control" />
+        <span asp-validation-for="MileageAllowance" class="text-danger"></span>
+    </div>
 </div>
 <script>
     // Only show the fields that apply to the chosen finance type.

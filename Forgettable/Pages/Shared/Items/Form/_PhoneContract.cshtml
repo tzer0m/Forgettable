@@ -1,7 +1,9 @@
 ﻿@model PhoneContract
 
-<div class="mb-3">
-    <label asp-for="Network" class="form-label"></label>
-    <input asp-for="Network" class="form-control" />
-    <span asp-validation-for="Network" class="text-danger"></span>
+<div class="row mb-3">
+    <label asp-for="Network" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <input asp-for="Network" class="form-control" />
+        <span asp-validation-for="Network" class="text-danger"></span>
+    </div>
 </div>

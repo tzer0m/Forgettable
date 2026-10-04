@@ -1,7 +1,9 @@
 ﻿@model GHIC
 
-<div class="mb-3">
-    <label asp-for="PersonalIdNumber" class="form-label"></label>
-    <input asp-for="PersonalIdNumber" class="form-control" />
-    <span asp-validation-for="PersonalIdNumber" class="text-danger"></span>
+<div class="row mb-3">
+    <label asp-for="PersonalIdNumber" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <input asp-for="PersonalIdNumber" class="form-control" />
+        <span asp-validation-for="PersonalIdNumber" class="text-danger"></span>
+    </div>
 </div>

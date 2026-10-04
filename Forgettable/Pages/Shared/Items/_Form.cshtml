@@ -1,29 +1,43 @@
 ﻿@model Item
 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-<div class="mb-3">
-    <label asp-for="Subject" class="form-label"></label>
-    <input asp-for="Subject" class="form-control" />
-    <span asp-validation-for="Subject" class="text-danger"></span>
+<div class="row mb-3">
+    <label asp-for="Subject" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <input asp-for="Subject" class="form-control" />
+        <span asp-validation-for="Subject" class="text-danger"></span>
+    </div>
 </div>
-<div class="mb-3">
-    <label asp-for="ExpiryDate" class="form-label"></label>
-    <input asp-for="ExpiryDate" type="date" class="form-control" />
-    <span asp-validation-for="ExpiryDate" class="text-danger"></span>
+<div class="row mb-3">
+    <label asp-for="ExpiryDate" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <input asp-for="ExpiryDate" type="date" class="form-control" />
+        <span asp-validation-for="ExpiryDate" class="text-danger"></span>
+    </div>
 </div>
 <partial name="Items/Form/_@(Model.GetType().Name)" model="Model" />
-<div class="mb-3">
-    <label asp-for="PaperlessDocumentId" class="form-label"></label>
-    <input asp-for="PaperlessDocumentId" class="form-control" />
-    <span asp-validation-for="PaperlessDocumentId" class="text-danger"></span>
+<div class="row mb-3">
+    <label asp-for="PaperlessDocumentId" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <input asp-for="PaperlessDocumentId" class="form-control" />
+        <span asp-validation-for="PaperlessDocumentId" class="text-danger"></span>
+    </div>
 </div>
-<div class="form-check mb-3">
-    <input asp-for="Booked" class="form-check-input" />
-    <label asp-for="Booked" class="form-check-label"></label>
+<div class="row mb-3">
+    <div class="col-sm-9 offset-sm-3">
+        <div class="form-check">
+            <input asp-for="Booked" class="form-check-input" />
+            <label asp-for="Booked" class="form-check-label"></label>
+        </div>
+    </div>
 </div>
-<div class="form-check mb-3">
-    <input asp-for="AutoRenew" class="form-check-input" />
-    <label asp-for="AutoRenew" class="form-check-label"></label>
+<div class="row mb-3">
+    <div class="col-sm-9 offset-sm-3">
+        <div class="form-check">
+            <input asp-for="AutoRenew" class="form-check-input" />
+            <label asp-for="AutoRenew" class="form-check-label"></label>
+        </div>
+    </div>
 </div>
 <script>
     // Changing the expiry date means a new period, so it's no longer booked unless ticked again.

@@ -1,7 +1,9 @@
 ﻿@model MOT
 
-<div class="mb-3">
-    <label asp-for="Registration" class="form-label"></label>
-    <input asp-for="Registration" class="form-control" />
-    <span asp-validation-for="Registration" class="text-danger"></span>
+<div class="row mb-3">
+    <label asp-for="Registration" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <input asp-for="Registration" class="form-control" />
+        <span asp-validation-for="Registration" class="text-danger"></span>
+    </div>
 </div>
