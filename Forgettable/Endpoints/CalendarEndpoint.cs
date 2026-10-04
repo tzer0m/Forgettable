@@ -28,7 +28,7 @@ namespace Forgettable.Endpoints
             {
                 return Results.NotFound();
             }
-            List<Item> items = await db.Items.AsNoTracking().Where(x => !x.Archived).ToListAsync();
+            List<Item> items = await db.Items.AsNoTracking().Where(x => !x.Archived && !x.Booked).ToListAsync();
             string baseUrl = $"{request.Scheme}://{request.Host}{request.PathBase}";
             return Results.Text(CalendarFeed.Build(items, baseUrl), "text/calendar; charset=utf-8");
         }

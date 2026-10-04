@@ -9,15 +9,15 @@ namespace Forgettable.Helpers
     public static class CalendarFeed
     {
         /// <summary>
-        /// Returns the iCalendar text for the active items.
+        /// Returns the iCalendar text for the active, unbooked items.
         /// </summary>
-        /// <param name="items">The items to include; archived items are skipped.</param>
+        /// <param name="items">The items to include; archived and booked items are skipped.</param>
         /// <param name="baseUrl">The site's base URL, used to link each event back to its item.</param>
         public static string Build(IEnumerable<Item> items, string baseUrl)
         {
             string stamp = DateTime.UtcNow.ToString("yyyyMMdd'T'HHmmss'Z'");
             List<string> lines = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//Forgettable//EN", "CALSCALE:GREGORIAN", "METHOD:PUBLISH", "X-WR-CALNAME:Forgettable", "REFRESH-INTERVAL;VALUE=DURATION:PT1H", "X-PUBLISHED-TTL:PT1H"];
-            foreach (Item item in items.Where(x => !x.Archived))
+            foreach (Item item in items.Where(x => !x.Archived && !x.Booked))
             {
                 string url = $"{baseUrl.TrimEnd('/')}/#item-{item.ItemId}";
                 string details = string.Join("\n", ItemDetails.Get(item).Select(x => $"{x.Label}: {x.Text}"));
