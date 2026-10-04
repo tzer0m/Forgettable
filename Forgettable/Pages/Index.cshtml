@@ -39,12 +39,20 @@
 
 @section Scripts {
     <script>
-        // Size each open item's thumbnails to the height of its details column.
+        // Size each open item's thumbnails to the height of its details column. Resizing the thumbnail changes the
+        // width left for the details, which can rewrap them, so repeat until the height settles.
         function sizeThumbnails(pane) {
             const details = pane.querySelector('.item-details');
-            pane.querySelectorAll('.document-thumbnail').forEach(image => image.style.height = `${details.offsetHeight}px`);
+            for (let attempt = 0; attempt < 3; attempt++) {
+                const height = details.offsetHeight;
+                pane.querySelectorAll('.document-thumbnail').forEach(image => image.style.height = `${height}px`);
+                if (details.offsetHeight === height) {
+                    break;
+                }
+            }
         }
         document.addEventListener('show.bs.collapse', event => { if (event.target.matches('tr')) { requestAnimationFrame(() => sizeThumbnails(event.target)); } });
+        document.addEventListener('load', event => { if (event.target.matches?.('.document-thumbnail')) { sizeThumbnails(event.target.closest('tr')); } }, true);
         window.addEventListener('resize', () => document.querySelectorAll('tr.collapse.show').forEach(sizeThumbnails));
     </script>
 }

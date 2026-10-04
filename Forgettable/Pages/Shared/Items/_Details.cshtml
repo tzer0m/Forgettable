@@ -3,17 +3,6 @@
 
 <div class="d-flex gap-3">
     <div class="item-details flex-grow-1">
-        <div class="d-flex flex-wrap gap-2 mb-2">
-            @if (Model.PaperlessDocumentId is int buttonDocumentId)
-            {
-                <a href="@Paperless.GetDocumentUrl(buttonDocumentId)" target="_blank" rel="noopener" class="btn btn-sm btn-outline-primary d-sm-none">Paperless</a>
-            }
-            <a asp-page="/Edit" asp-route-id="@Model.ItemId" class="btn btn-sm btn-outline-primary">Edit</a>
-            <form method="post" asp-page="/Index" asp-page-handler="Archive" asp-route-id="@Model.ItemId">
-                <button type="submit" class="btn btn-sm btn-outline-secondary">@(Model.Archived ? "Unarchive" : "Archive")</button>
-            </form>
-            <a asp-page="/Delete" asp-route-id="@Model.ItemId" class="btn btn-sm btn-outline-danger">Delete</a>
-        </div>
         <dl class="row mb-0">
             <dt class="col-5 col-sm-3">Type</dt>
             <dd class="col-7 col-sm-9">@ItemTypes.GetDisplayName(Model.GetType())</dd>
@@ -32,6 +21,17 @@
             <dd class="col-7 col-sm-9"><partial name="_YesNo" model="Model.AutoRenew" /></dd>
         </dl>
         <partial name="Items/Details/_@(Model.GetType().Name)" model="Model" />
+        <div class="d-flex flex-wrap gap-2 mt-2">
+            @if (Model.PaperlessDocumentId is int buttonDocumentId)
+            {
+                <a href="@Paperless.GetDocumentUrl(buttonDocumentId)" target="_blank" rel="noopener" class="btn btn-sm btn-outline-primary d-sm-none">Paperless</a>
+            }
+            <a asp-page="/Edit" asp-route-id="@Model.ItemId" class="btn btn-sm btn-outline-primary">Edit</a>
+            <form method="post" asp-page="/Index" asp-page-handler="Archive" asp-route-id="@Model.ItemId">
+                <button type="submit" class="btn btn-sm btn-outline-secondary">@(Model.Archived ? "Unarchive" : "Archive")</button>
+            </form>
+            <a asp-page="/Delete" asp-route-id="@Model.ItemId" class="btn btn-sm btn-outline-danger">Delete</a>
+        </div>
     </div>
     @if (Model.PaperlessDocumentId is int documentId)
     {
