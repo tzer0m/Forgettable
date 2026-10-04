@@ -24,7 +24,6 @@
             <th>Name</th>
             <th>Due</th>
             <th>Days Left</th>
-            <th>Expiry</th>
             <th>Booked</th>
             <th>Auto Renew</th>
         </tr>
@@ -37,12 +36,11 @@
                 <td>@item.Name</td>
                 <td>@item.DueDate.ToString("dd MMM yyyy")</td>
                 <td>@(item.DueDate.DayNumber - today.DayNumber)</td>
-                <td>@item.ExpiryDate.ToString("dd MMM yyyy")</td>
                 <td><partial name="_YesNo" model="item.Booked" /></td>
                 <td><partial name="_YesNo" model="item.AutoRenew" /></td>
             </tr>
             <tr class="collapse" id="details-@item.ItemId">
-                <td colspan="7">
+                <td colspan="6">
                     <partial name="Items/_Details" model="item" />
                 </td>
             </tr>

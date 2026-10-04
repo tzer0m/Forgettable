@@ -12,10 +12,13 @@
             <dd class="col-sm-9">@ItemTypes.GetDisplayName(Model.GetType())</dd>
             <dt class="col-sm-3">Name</dt>
             <dd class="col-sm-9">@Model.Name</dd>
-            <dt class="col-sm-3">Expiry Date</dt>
-            <dd class="col-sm-9">@Model.ExpiryDate.ToString("dd MMM yyyy")</dd>
             <dt class="col-sm-3">Due Date</dt>
             <dd class="col-sm-9">@Model.DueDate.ToString("dd MMM yyyy")</dd>
+            @if (Model.ExpiryDate != Model.DueDate)
+            {
+                <dt class="col-sm-3">Expiry Date</dt>
+                <dd class="col-sm-9">@Model.ExpiryDate.ToString("dd MMM yyyy")</dd>
+            }
             <dt class="col-sm-3">Booked</dt>
             <dd class="col-sm-9"><partial name="_YesNo" model="Model.Booked" /></dd>
             <dt class="col-sm-3">Auto Renew</dt>
