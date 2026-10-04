@@ -51,3 +51,15 @@
         }
     </tbody>
 </table>
+
+@section Scripts {
+    <script>
+        // Size each open item's thumbnails to the height of its details column.
+        function sizeThumbnails(pane) {
+            const details = pane.querySelector('.item-details');
+            pane.querySelectorAll('.document-thumbnail').forEach(image => image.style.height = `${details.offsetHeight}px`);
+        }
+        document.addEventListener('shown.bs.collapse', event => { if (event.target.matches('tr')) { sizeThumbnails(event.target); } });
+        window.addEventListener('resize', () => document.querySelectorAll('tr.collapse.show').forEach(sizeThumbnails));
+    </script>
+}

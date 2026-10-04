@@ -12,6 +12,11 @@
     <span asp-validation-for="ExpiryDate" class="text-danger"></span>
 </div>
 <partial name="Items/Form/_@(Model.GetType().Name)" model="Model" />
+<div class="mb-3">
+    <label asp-for="PaperlessDocuments" class="form-label"></label>
+    <input asp-for="PaperlessDocuments" class="form-control" />
+    <div class="form-text">Paperless document IDs, separated by commas (e.g. 12,45).</div>
+</div>
 <div class="form-check mb-3">
     <input asp-for="AutoRenew" class="form-check-input" />
     <label asp-for="AutoRenew" class="form-check-label"></label>

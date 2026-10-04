@@ -1,15 +1,31 @@
 ﻿@model Item
+@inject Forgettable.Services.PaperlessClient Paperless
 
-<dl class="row mb-0">
-    <dt class="col-sm-3">Type</dt>
-    <dd class="col-sm-9">@ItemTypes.GetDisplayName(Model.GetType())</dd>
-    <dt class="col-sm-3">Name</dt>
-    <dd class="col-sm-9">@Model.Name</dd>
-    <dt class="col-sm-3">Expiry Date</dt>
-    <dd class="col-sm-9">@Model.ExpiryDate.ToString("dd MMM yyyy")</dd>
-    <dt class="col-sm-3">Due Date</dt>
-    <dd class="col-sm-9">@Model.DueDate.ToString("dd MMM yyyy")</dd>
-    <dt class="col-sm-3">Auto Renew</dt>
-    <dd class="col-sm-9">@(Model.AutoRenew ? "Yes" : "No")</dd>
-</dl>
-<partial name="Items/Details/_@(Model.GetType().Name)" model="Model" />
+<div class="d-flex gap-3">
+    <div class="item-details flex-grow-1">
+        <dl class="row mb-0">
+            <dt class="col-sm-3">Type</dt>
+            <dd class="col-sm-9">@ItemTypes.GetDisplayName(Model.GetType())</dd>
+            <dt class="col-sm-3">Name</dt>
+            <dd class="col-sm-9">@Model.Name</dd>
+            <dt class="col-sm-3">Expiry Date</dt>
+            <dd class="col-sm-9">@Model.ExpiryDate.ToString("dd MMM yyyy")</dd>
+            <dt class="col-sm-3">Due Date</dt>
+            <dd class="col-sm-9">@Model.DueDate.ToString("dd MMM yyyy")</dd>
+            <dt class="col-sm-3">Auto Renew</dt>
+            <dd class="col-sm-9">@(Model.AutoRenew ? "Yes" : "No")</dd>
+        </dl>
+        <partial name="Items/Details/_@(Model.GetType().Name)" model="Model" />
+    </div>
+    @if (Model.PaperlessDocumentIds.Count > 0)
+    {
+        <div class="document-thumbnails d-flex align-items-start gap-2">
+            @foreach (int documentId in Model.PaperlessDocumentIds)
+            {
+                <a href="@Paperless.GetDocumentUrl(documentId)" target="_blank" rel="noopener">
+                    <img src="/paperless/thumbnail/@documentId" alt="Paperless document @documentId" class="img-thumbnail document-thumbnail" loading="lazy" />
+                </a>
+            }
+        </div>
+    }
+</div>
