@@ -13,6 +13,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ForgettableDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("Forgettable")));
 builder.Services.Configure<PaperlessOptions>(builder.Configuration.GetSection("Paperless"));
 builder.Services.AddHttpClient<PaperlessClient>();
+builder.Services.AddHealthChecks().AddDbContextCheck<ForgettableDbContext>();
 
 // Sign in with Pocket ID; the cookie keeps me signed in for 30 days.
 AuthenticationBuilder authentication = builder.Services.AddAuthentication(options =>
@@ -70,5 +71,6 @@ app.UseAuthentication();
 app.UseAuthorization();
 app.MapStaticAssets().AllowAnonymous();
 app.MapRazorPages().WithStaticAssets();
+app.MapHealthChecks("/health").AllowAnonymous();
 app.MapGet("/paperless/thumbnail/{id:int}", async (int id, PaperlessClient paperless) => await paperless.GetThumbnailAsync(id) is byte[] content ? Results.File(content, "image/webp") : Results.NotFound());
 app.Run();
