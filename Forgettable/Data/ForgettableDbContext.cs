@@ -45,6 +45,11 @@ namespace Forgettable.Data
         public DbSet<GHIC> GHICs { get; set; }
 
         /// <summary>
+        /// Railcards.
+        /// </summary>
+        public DbSet<Railcard> Railcards { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>
