@@ -20,6 +20,7 @@
 <table class="table">
     <thead>
         <tr>
+            <th>Type</th>
             <th>Name</th>
             <th>Due</th>
             <th>Days Left</th>
@@ -31,6 +32,7 @@
         @foreach (Item item in Model.Items)
         {
             <tr role="button" data-bs-toggle="collapse" data-bs-target="#details-@item.ItemId" aria-expanded="false" aria-controls="details-@item.ItemId">
+                <td>@ItemTypes.GetDisplayName(item.GetType())</td>
                 <td>@item.Name</td>
                 <td>@item.DueDate.ToString("dd MMM yyyy")</td>
                 <td>@(item.DueDate.DayNumber - today.DayNumber)</td>
@@ -38,12 +40,12 @@
                 <td>@(item.AutoRenew ? "Yes" : "No")</td>
             </tr>
             <tr class="collapse" id="details-@item.ItemId">
-                <td colspan="5">
+                <td colspan="6">
                     <div class="d-flex gap-2 mb-2">
                         <a asp-page="/Edit" asp-route-id="@item.ItemId" class="btn btn-sm btn-outline-primary">Edit</a>
                         <a asp-page="/Delete" asp-route-id="@item.ItemId" class="btn btn-sm btn-outline-danger">Delete</a>
                     </div>
-                    <partial name="Items/Details/_@(item.GetType().Name)" model="item" />
+                    <partial name="Items/_Details" model="item" />
                 </td>
             </tr>
         }
