@@ -56,6 +56,11 @@ namespace Forgettable.Data
         public DbSet<VehicleInsurance> VehicleInsurances { get; set; }
 
         /// <summary>
+        /// Vehicle tax.
+        /// </summary>
+        public DbSet<VehicleTax> VehicleTaxes { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>
