@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Forgettable.Models
 {
     /// <summary>
@@ -5,6 +7,12 @@ namespace Forgettable.Models
     /// </summary>
     public class Passport : Item
     {
+        /// <summary>
+        /// The passport number.
+        /// </summary>
+        [Display(Name = "Passport Number")]
+        public string PassportNumber { get; set; } = string.Empty;
+
         /// <summary>
         /// The last date the passport has 6 months of validity left.
         /// </summary>

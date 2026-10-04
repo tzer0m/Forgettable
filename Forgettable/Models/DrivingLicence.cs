@@ -10,9 +10,9 @@ namespace Forgettable.Models
     public class DrivingLicence : Item
     {
         /// <summary>
-        /// The driver number.
+        /// The licence number.
         /// </summary>
-        [Display(Name = "Driver Number")]
-        public string DriverNumber { get; set; } = string.Empty;
+        [Display(Name = "Licence Number")]
+        public string LicenceNumber { get; set; } = string.Empty;
     }
 }
