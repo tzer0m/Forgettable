@@ -1,0 +1,20 @@
+﻿@model Mortgage
+
+<div class="mb-3">
+    <label asp-for="Lender" class="form-label"></label>
+    <input asp-for="Lender" class="form-control" />
+    <span asp-validation-for="Lender" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="AccountNumber" class="form-label"></label>
+    <input asp-for="AccountNumber" class="form-control" />
+    <span asp-validation-for="AccountNumber" class="text-danger"></span>
+</div>
+<div class="mb-3">
+    <label asp-for="Rate" class="form-label"></label>
+    <div class="input-group">
+        <input asp-for="Rate" class="form-control" />
+        <span class="input-group-text">%</span>
+    </div>
+    <span asp-validation-for="Rate" class="text-danger"></span>
+</div>
