@@ -1,7 +1,45 @@
 ﻿@page
+@using Forgettable.Models
 @model IndexModel
 @{
     ViewData["Title"] = "Dashboard";
+    DateOnly today = DateOnly.FromDateTime(DateTime.Today);
 }
 
 <h1>Dashboard</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Expiry</th>
+            <th>Days Left</th>
+            <th>Auto Renew</th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Item item in Model.Items)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.ExpiryDate.ToString("dd MMM yyyy")</td>
+                <td>@(item.ExpiryDate.DayNumber - today.DayNumber)</td>
+                <td>@(item.AutoRenew ? "Yes" : "No")</td>
+                <td>
+                    @switch (item)
+                    {
+                        case Passport passport:
+                            <span>Effective expiry: @passport.EffectiveExpiryDate.ToString("dd MMM yyyy")</span>
+                            break;
+                        case DrivingLicence licence:
+                            <span>Driver number: @licence.DriverNumber</span>
+                            break;
+                        case Mot mot:
+                            <span>@mot.Registration, earliest test: @mot.EarliestTestDate.ToString("dd MMM yyyy")</span>
+                            break;
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
