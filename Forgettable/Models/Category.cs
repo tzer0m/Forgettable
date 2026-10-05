@@ -36,9 +36,9 @@ namespace Forgettable.Models
         Warranties,
 
         /// <summary>
-        /// Business and IT.
+        /// IT, such as domains and certificates.
         /// </summary>
-        Work,
+        IT,
 
         /// <summary>
         /// Health check-ups and prescriptions.
