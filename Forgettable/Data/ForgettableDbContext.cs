@@ -131,6 +131,11 @@ namespace Forgettable.Data
         public DbSet<ConfirmationStatement> ConfirmationStatements { get; set; }
 
         /// <summary>
+        /// Companies House annual accounts.
+        /// </summary>
+        public DbSet<AnnualAccounts> AnnualAccounts { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>
