@@ -25,9 +25,9 @@ namespace Forgettable.Models.Items
         public string Plan { get; set; } = string.Empty;
 
         /// <summary>
-        /// The date to renew, 2 weeks before expiry.
+        /// The date to renew, a day before expiry.
         /// </summary>
-        public DateOnly RenewByDate => ExpiryDate.AddDays(-14);
+        public DateOnly RenewByDate => ExpiryDate.AddDays(-2);
 
         /// <summary>
         /// The subscription is due from the renew by date.

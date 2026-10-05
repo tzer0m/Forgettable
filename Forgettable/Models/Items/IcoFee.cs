@@ -21,9 +21,9 @@ namespace Forgettable.Models.Items
         public string RegistrationNumber { get; set; } = string.Empty;
 
         /// <summary>
-        /// The date to renew, a month before expiry.
+        /// The date to renew, a week before expiry.
         /// </summary>
-        public DateOnly RenewByDate => ExpiryDate.AddMonths(-1);
+        public DateOnly RenewByDate => ExpiryDate.AddDays(-7);
 
         /// <summary>
         /// The fee is due from the renew by date.

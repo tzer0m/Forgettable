@@ -21,9 +21,9 @@ namespace Forgettable.Models.Items
         public string CompanyNumber { get; set; } = string.Empty;
 
         /// <summary>
-        /// The date to check with the accountant, a month before the deadline.
+        /// The date to check with the accountant, a week before the deadline.
         /// </summary>
-        public DateOnly CheckByDate => ExpiryDate.AddMonths(-1);
+        public DateOnly CheckByDate => ExpiryDate.AddDays(-7);
 
         /// <summary>
         /// The accounts are due from the check by date.

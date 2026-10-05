@@ -27,9 +27,9 @@ namespace Forgettable.Models.Items
         public string AccountingPeriod { get; set; } = string.Empty;
 
         /// <summary>
-        /// The date to check with the accountant, a month before the payment deadline.
+        /// The date to check with the accountant, a week before the payment deadline.
         /// </summary>
-        public DateOnly CheckByDate => ExpiryDate.AddMonths(-1);
+        public DateOnly CheckByDate => ExpiryDate.AddDays(-7);
 
         /// <summary>
         /// The tax is due from the check by date.

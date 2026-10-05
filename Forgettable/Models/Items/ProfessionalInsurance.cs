@@ -6,7 +6,7 @@ namespace Forgettable.Models.Items
     /// <summary>
     /// A professional indemnity or business insurance policy.
     /// </summary>
-    [DisplayName("Professional Insurance")]
+    [DisplayName("Insurance")]
     public class ProfessionalInsurance : Item
     {
         /// <summary>
