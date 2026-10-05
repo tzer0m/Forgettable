@@ -106,6 +106,11 @@ namespace Forgettable.Data
         public DbSet<SslCertificate> SslCertificates { get; set; }
 
         /// <summary>
+        /// Electrical checks.
+        /// </summary>
+        public DbSet<ElectricalCheck> ElectricalChecks { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>

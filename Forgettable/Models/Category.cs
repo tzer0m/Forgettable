@@ -21,23 +21,8 @@ namespace Forgettable.Models
         Property,
 
         /// <summary>
-        /// Banking and savings.
-        /// </summary>
-        Finance,
-
-        /// <summary>
-        /// Product warranties.
-        /// </summary>
-        Warranties,
-
-        /// <summary>
         /// IT, such as domains and certificates.
         /// </summary>
-        IT,
-
-        /// <summary>
-        /// Health check-ups and prescriptions.
-        /// </summary>
-        Health
+        IT
     }
 }

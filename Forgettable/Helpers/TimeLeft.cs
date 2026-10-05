@@ -26,15 +26,15 @@ namespace Forgettable.Helpers
         /// <param name="days">The number of days.</param>
         private static string Format(int days)
         {
-            if (days < 14)
+            if (days < 7)
             {
                 return Unit(days, "d");
             }
-            if (days < 60)
+            if (days < 30)
             {
                 return Unit(days / 7.0, "w");
             }
-            if (days < 730)
+            if (days < 365)
             {
                 return Unit(days / 30.44, "m");
             }
