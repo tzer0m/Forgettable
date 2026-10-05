@@ -164,3 +164,37 @@ tr.due > td {
 tr.due .text-success, tr.due .text-danger {
   color: var(--forgettable-navy-darkest) !important;
 }
+
+/* Add menu: categories expand to show their item types, flying out on hover where a mouse is available. */
+.add-menu .dropdown-submenu > .dropdown-menu {
+  position: static;
+  border: 0;
+  box-shadow: none;
+  padding: 0 0 0 1rem;
+}
+
+.add-menu .dropdown-submenu.open > .dropdown-menu {
+  display: block;
+}
+
+@media (hover: hover) {
+  .add-menu .dropdown-submenu {
+    position: relative;
+  }
+
+  .add-menu .dropdown-submenu > .dropdown-menu {
+    position: absolute;
+    top: 0;
+    right: 100%;
+    border: var(--bs-dropdown-border-width) solid var(--bs-dropdown-border-color);
+    padding: var(--bs-dropdown-padding-y) 0;
+  }
+
+  .add-menu .dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+  }
+
+  .add-menu .dropdown-submenu.open:not(:hover) > .dropdown-menu {
+    display: none;
+  }
+}

@@ -27,15 +27,19 @@
                 </a>
                 <div class="d-flex gap-2">
                     <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Add</button>
-                        <ul class="dropdown-menu dropdown-menu-end">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Add</button>
+                        <ul class="dropdown-menu dropdown-menu-end add-menu">
                             @foreach (IGrouping<Category, Type> group in ItemTypes.All.Values.GroupBy(ItemTypes.GetCategory).OrderBy(x => x.Key))
                             {
-                                <li><h6 class="dropdown-header"><span class="badge category-@group.Key.ToString().ToLower()">@group.Key</span></h6></li>
-                                @foreach (Type itemType in group)
-                                {
-                                    <li><a class="dropdown-item" asp-page="/Add" asp-route-type="@itemType.Name">@ItemTypes.GetDisplayName(itemType)</a></li>
-                                }
+                                <li class="dropdown-submenu">
+                                    <button type="button" class="dropdown-item" onclick="toggleSubmenu(this)"><span class="badge category-@group.Key.ToString().ToLower()">@group.Key</span></button>
+                                    <ul class="dropdown-menu">
+                                        @foreach (Type itemType in group)
+                                        {
+                                            <li><a class="dropdown-item" asp-page="/Add" asp-route-type="@itemType.Name">@ItemTypes.GetDisplayName(itemType)</a></li>
+                                        }
+                                    </ul>
+                                </li>
                             }
                         </ul>
                     </div>
@@ -55,6 +59,13 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        // Expand a category in the Add menu when tapped, closing any other open category.
+        function toggleSubmenu(button) {
+            const submenu = button.parentElement;
+            document.querySelectorAll('.dropdown-submenu.open').forEach(x => { if (x !== submenu) x.classList.remove('open'); });
+            submenu.classList.toggle('open');
+        }
+
         // Copy the calendar feed's full address so it can be pasted into a calendar app.
         function copyCalendarLink(button) {
             navigator.clipboard.writeText(new URL(button.dataset.calendarUrl, location.origin).href).then(() => {
