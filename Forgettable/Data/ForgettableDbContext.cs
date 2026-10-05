@@ -141,6 +141,11 @@ namespace Forgettable.Data
         public DbSet<IcoFee> IcoFees { get; set; }
 
         /// <summary>
+        /// Professional indemnity and business insurance policies.
+        /// </summary>
+        public DbSet<ProfessionalInsurance> ProfessionalInsurances { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>
