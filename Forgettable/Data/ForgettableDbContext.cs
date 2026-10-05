@@ -136,6 +136,11 @@ namespace Forgettable.Data
         public DbSet<AnnualAccounts> AnnualAccounts { get; set; }
 
         /// <summary>
+        /// ICO data protection fees.
+        /// </summary>
+        public DbSet<IcoFee> IcoFees { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>
