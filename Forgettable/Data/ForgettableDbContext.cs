@@ -126,6 +126,11 @@ namespace Forgettable.Data
         public DbSet<SelfAssessment> SelfAssessments { get; set; }
 
         /// <summary>
+        /// Companies House confirmation statements.
+        /// </summary>
+        public DbSet<ConfirmationStatement> ConfirmationStatements { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>
