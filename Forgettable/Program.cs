@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
+using t0m.Ting;
 
 // Create web application builder.
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -15,6 +16,9 @@ builder.Services.AddDbContext<ForgettableDbContext>(options => options.UseNpgsql
 builder.Services.Configure<PaperlessOptions>(builder.Configuration.GetSection("Paperless"));
 builder.Services.AddHttpClient<PaperlessClient>();
 builder.Services.Configure<CalendarOptions>(builder.Configuration.GetSection("Calendar"));
+builder.Services.AddTingClient(builder.Configuration);
+builder.Services.Configure<ReminderOptions>(builder.Configuration.GetSection("Reminders"));
+builder.Services.AddHostedService<ReminderService>();
 builder.Services.AddHealthChecks().AddDbContextCheck<ForgettableDbContext>();
 
 // Sign in with Pocket ID; the cookie keeps me signed in for 30 days.
