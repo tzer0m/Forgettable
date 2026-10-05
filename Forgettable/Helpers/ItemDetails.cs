@@ -51,7 +51,16 @@ namespace Forgettable.Helpers
             {
                 return string.Format(format, value);
             }
-            return value switch { DateOnly date => date.ToString("dd MMM yyyy"), bool flag => flag ? "Yes" : "No", _ => value.ToString() ?? string.Empty };
+            return value switch { DateOnly date => date.ToString("dd MMM yyyy"), bool flag => flag ? "Yes" : "No", Enum option => EnumName(option), _ => value.ToString() ?? string.Empty };
+        }
+
+        /// <summary>
+        /// Returns an enum value's display name if it has one, e.g. "Carbon Monoxide".
+        /// </summary>
+        /// <param name="option">The enum value.</param>
+        private static string EnumName(Enum option)
+        {
+            return option.GetType().GetField(option.ToString())?.GetCustomAttribute<DisplayAttribute>()?.GetName() ?? option.ToString();
         }
 
         /// <summary>

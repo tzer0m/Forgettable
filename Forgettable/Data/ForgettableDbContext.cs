@@ -111,6 +111,11 @@ namespace Forgettable.Data
         public DbSet<ElectricalCheck> ElectricalChecks { get; set; }
 
         /// <summary>
+        /// Smoke, carbon monoxide and heat alarms.
+        /// </summary>
+        public DbSet<Alarm> Alarms { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>

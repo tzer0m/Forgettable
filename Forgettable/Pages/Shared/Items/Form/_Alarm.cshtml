@@ -1,0 +1,8 @@
+﻿@model Alarm
+
+<div class="row mb-3">
+    <label asp-for="AlarmType" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <select asp-for="AlarmType" asp-items="Html.GetEnumSelectList<AlarmType>()" class="form-select"></select>
+    </div>
+</div>
