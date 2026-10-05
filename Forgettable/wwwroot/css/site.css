@@ -143,12 +143,12 @@ tr.collapsing {
   margin-right: 0.4rem;
 }
 
-.category-travel { background-color: #0d6efd; }
-.category-vehicle { background-color: #fd7e14; }
-.category-property { background-color: #198754; }
-.category-it { background-color: #6c757d; }
-.category-business { background-color: #20c997; }
-.category-finance { background-color: #6f42c1; }
+.category-travel { background-color: #5ad56d; color: #000; }
+.category-driving { background-color: #2baf7e; color: #000; }
+.category-property { background-color: #e59899; color: #000; }
+.category-finance { background-color: #d9ba68; color: #000; }
+.category-it { background-color: #928ce2; }
+.category-business { background-color: #ff6c1e; color: #000; }
 
 /* Booked and archived items are greyed out; archived ones also sit at the bottom. */
 tr.faded {

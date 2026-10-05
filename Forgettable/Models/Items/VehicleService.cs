@@ -12,7 +12,7 @@ namespace Forgettable.Models.Items
         /// <summary>
         /// The item's category.
         /// </summary>
-        public override Category Category => Category.Vehicle;
+        public override Category Category => Category.Driving;
 
         /// <summary>
         /// The vehicle's registration number.

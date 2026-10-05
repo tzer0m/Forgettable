@@ -11,9 +11,9 @@ namespace Forgettable.Models
         Travel,
 
         /// <summary>
-        /// Vehicle related.
+        /// Driving and vehicles.
         /// </summary>
-        Vehicle,
+        Driving,
 
         /// <summary>
         /// Home and property.
