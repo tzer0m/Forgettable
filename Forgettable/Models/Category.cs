@@ -23,6 +23,16 @@ namespace Forgettable.Models
         /// <summary>
         /// IT, such as domains and certificates.
         /// </summary>
-        IT
+        IT,
+
+        /// <summary>
+        /// Business, such as company filings.
+        /// </summary>
+        Business,
+
+        /// <summary>
+        /// Personal finance, such as tax returns.
+        /// </summary>
+        Finance
     }
 }

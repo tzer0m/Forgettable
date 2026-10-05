@@ -121,6 +121,11 @@ namespace Forgettable.Data
         public DbSet<ApiToken> ApiTokens { get; set; }
 
         /// <summary>
+        /// Self Assessment tax returns.
+        /// </summary>
+        public DbSet<SelfAssessment> SelfAssessments { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>

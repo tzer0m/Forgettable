@@ -147,6 +147,8 @@ tr.collapsing {
 .category-vehicle { background-color: #fd7e14; }
 .category-property { background-color: #198754; }
 .category-it { background-color: #6c757d; }
+.category-business { background-color: #20c997; }
+.category-finance { background-color: #6f42c1; }
 
 /* Booked and archived items are greyed out; archived ones also sit at the bottom. */
 tr.faded {
