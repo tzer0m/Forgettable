@@ -51,7 +51,7 @@ namespace Forgettable.Services
             {
                 return;
             }
-            string title = count == 1 ? "1 Item Due" : $"{count} Items Due";
+            string title = count == 1 ? "Forgettable: 1 Item Due" : $"Forgettable: {count} Items Due";
             string body = string.Join("\n", due.Select(x => $"{x.Subject} - {ItemTypes.GetDisplayName(x.GetType())}: {Overdue(today.DayNumber - x.DueDate.DayNumber)}"));
             await ting.SendAsync(title, body);
             LogReminderSent(logger, count);
