@@ -146,6 +146,11 @@ namespace Forgettable.Data
         public DbSet<ProfessionalInsurance> ProfessionalInsurances { get; set; }
 
         /// <summary>
+        /// Corporation Tax payments.
+        /// </summary>
+        public DbSet<CorporationTax> CorporationTaxes { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>
