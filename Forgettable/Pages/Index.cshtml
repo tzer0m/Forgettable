@@ -2,6 +2,7 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Dashboard";
+    DateOnly today = DateOnly.FromDateTime(DateTime.Today);
 }
 
 <table class="table">
@@ -12,24 +13,22 @@
             <th>Subject</th>
             <th class="d-none d-sm-table-cell">Due</th>
             <th>Time Left</th>
-            <th class="d-none d-md-table-cell">Booked</th>
-            <th class="d-none d-md-table-cell">Auto Renew</th>
+            <th><span class="d-md-none" title="Auto Renew">AR</span><span class="d-none d-md-inline">Auto Renew</span></th>
         </tr>
     </thead>
     <tbody>
         @foreach (Item item in Model.Items)
         {
-            <tr id="item-@item.ItemId" role="button" class="@(item.Archived ? "archived" : null)" data-bs-toggle="collapse" data-bs-target="#details-@item.ItemId" aria-expanded="false" aria-controls="details-@item.ItemId">
+            <tr id="item-@item.ItemId" role="button" class="@(item.Archived || item.Booked ? "faded" : item.DueDate <= today ? "due" : null)" data-bs-toggle="collapse" data-bs-target="#details-@item.ItemId" aria-expanded="false" aria-controls="details-@item.ItemId">
                 <td class="d-none d-md-table-cell"><span class="badge category-@item.Category.ToString().ToLower()">@item.Category</span></td>
                 <td><span class="category-dot category-@item.Category.ToString().ToLower() d-md-none" title="@item.Category"></span>@ItemTypes.GetDisplayName(item.GetType())</td>
                 <td>@item.Subject</td>
                 <td class="d-none d-sm-table-cell">@item.DueDate.ToString("dd MMM yyyy")</td>
                 <td>@(item.Archived ? null : TimeLeft.Describe(item.DueDate))</td>
-                <td class="d-none d-md-table-cell">@if (!item.Archived) { <partial name="_YesNo" model="item.Booked" /> }</td>
-                <td class="d-none d-md-table-cell">@if (!item.Archived) { <partial name="_YesNo" model="item.AutoRenew" /> }</td>
+                <td>@if (!item.Archived) { <partial name="_YesNo" model="item.AutoRenew" /> }</td>
             </tr>
             <tr class="collapse" id="details-@item.ItemId">
-                <td colspan="7">
+                <td colspan="6">
                     <partial name="Items/_Details" model="item" />
                 </td>
             </tr>

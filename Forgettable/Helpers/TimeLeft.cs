@@ -6,7 +6,7 @@ namespace Forgettable.Helpers
     public static class TimeLeft
     {
         /// <summary>
-        /// Returns the time left until a date, e.g. "5 days", "3.5 weeks" or "1.2 years overdue".
+        /// Returns the time left until a date, e.g. "5d", "3.5w", or "-2w" when overdue.
         /// </summary>
         /// <param name="date">The date to count down to.</param>
         public static string Describe(DateOnly date)
@@ -17,39 +17,38 @@ namespace Forgettable.Helpers
                 return "Today";
             }
             string amount = Format(Math.Abs(days));
-            return days < 0 ? $"{amount} overdue" : amount;
+            return days < 0 ? $"-{amount}" : amount;
         }
 
         /// <summary>
-        /// Formats a number of days as days, weeks, months or years.
+        /// Formats a number of days as days (d), weeks (w), months (m) or years (y).
         /// </summary>
         /// <param name="days">The number of days.</param>
         private static string Format(int days)
         {
             if (days < 14)
             {
-                return Unit(days, "day");
+                return Unit(days, "d");
             }
             if (days < 60)
             {
-                return Unit(days / 7.0, "week");
+                return Unit(days / 7.0, "w");
             }
             if (days < 730)
             {
-                return Unit(days / 30.44, "month");
+                return Unit(days / 30.44, "m");
             }
-            return Unit(days / 365.25, "year");
+            return Unit(days / 365.25, "y");
         }
 
         /// <summary>
-        /// Formats an amount to one decimal place with a singular or plural unit.
+        /// Formats an amount to one decimal place followed by its unit letter, e.g. "3.5w".
         /// </summary>
         /// <param name="amount">The amount.</param>
-        /// <param name="unit">The singular unit name.</param>
+        /// <param name="unit">The unit letter.</param>
         private static string Unit(double amount, string unit)
         {
-            string text = amount.ToString("0.#");
-            return text == "1" ? $"1 {unit}" : $"{text} {unit}s";
+            return $"{amount:0.#}{unit}";
         }
     }
 }

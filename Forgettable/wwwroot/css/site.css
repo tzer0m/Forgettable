@@ -152,7 +152,17 @@ tr.collapsing {
 .category-work { background-color: #6c757d; }
 .category-health { background-color: #d63384; }
 
-/* Archived items sit at the bottom of the dashboard, greyed out. */
-tr.archived {
+/* Booked and archived items are greyed out; archived ones also sit at the bottom. */
+tr.faded {
   opacity: 0.5;
+}
+
+/* Anything due today or overdue that isn't booked stands out in coral. */
+tr.due > td {
+  --bs-table-bg: var(--forgettable-coral);
+  --bs-table-color: var(--forgettable-navy-darkest);
+}
+
+tr.due .text-success, tr.due .text-danger {
+  color: var(--forgettable-navy-darkest) !important;
 }
