@@ -12,7 +12,7 @@ namespace Forgettable.Models.Items
         /// <summary>
         /// The item's category.
         /// </summary>
-        public override Category Category => Category.Contracts;
+        public override Category Category => Category.IT;
 
         /// <summary>
         /// The mobile network.

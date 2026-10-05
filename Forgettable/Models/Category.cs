@@ -26,11 +26,6 @@ namespace Forgettable.Models
         Finance,
 
         /// <summary>
-        /// Utility and phone contracts.
-        /// </summary>
-        Contracts,
-
-        /// <summary>
         /// Product warranties.
         /// </summary>
         Warranties,

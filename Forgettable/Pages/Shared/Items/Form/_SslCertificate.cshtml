@@ -1,0 +1,16 @@
+﻿@model SslCertificate
+
+<div class="row mb-3">
+    <label asp-for="Host" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <input asp-for="Host" class="form-control" />
+        <span asp-validation-for="Host" class="text-danger"></span>
+    </div>
+</div>
+<div class="row mb-3">
+    <label asp-for="Issuer" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <input asp-for="Issuer" class="form-control" />
+        <span asp-validation-for="Issuer" class="text-danger"></span>
+    </div>
+</div>
