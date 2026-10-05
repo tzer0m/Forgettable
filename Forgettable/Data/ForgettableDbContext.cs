@@ -151,9 +151,9 @@ namespace Forgettable.Data
         public DbSet<CorporationTax> CorporationTaxes { get; set; }
 
         /// <summary>
-        /// Prepaid subscriptions.
+        /// Prepaid Mullvad VPN accounts.
         /// </summary>
-        public DbSet<Subscription> Subscriptions { get; set; }
+        public DbSet<Mullvad> Mullvads { get; set; }
 
         /// <summary>
         /// Configures the model, storing every item type in one table.
