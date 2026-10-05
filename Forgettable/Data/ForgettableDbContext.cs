@@ -151,6 +151,11 @@ namespace Forgettable.Data
         public DbSet<CorporationTax> CorporationTaxes { get; set; }
 
         /// <summary>
+        /// Prepaid subscriptions.
+        /// </summary>
+        public DbSet<Subscription> Subscriptions { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>
