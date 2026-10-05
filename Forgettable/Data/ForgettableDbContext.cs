@@ -116,6 +116,11 @@ namespace Forgettable.Data
         public DbSet<Alarm> Alarms { get; set; }
 
         /// <summary>
+        /// API tokens and personal access tokens.
+        /// </summary>
+        public DbSet<ApiToken> ApiTokens { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>

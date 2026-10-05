@@ -1,0 +1,16 @@
+﻿@model ApiToken
+
+<div class="row mb-3">
+    <label asp-for="Service" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <input asp-for="Service" class="form-control" />
+        <span asp-validation-for="Service" class="text-danger"></span>
+    </div>
+</div>
+<div class="row mb-3">
+    <label asp-for="UsedBy" class="col-sm-3 col-form-label"></label>
+    <div class="col-sm-9">
+        <input asp-for="UsedBy" class="form-control" />
+        <span asp-validation-for="UsedBy" class="text-danger"></span>
+    </div>
+</div>
