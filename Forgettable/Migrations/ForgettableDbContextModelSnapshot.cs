@@ -302,6 +302,13 @@ namespace Forgettable.Migrations
                     b.HasDiscriminator().HasValue("Passport");
                 });
 
+            modelBuilder.Entity("Forgettable.Models.Items.PensionContribution", b =>
+                {
+                    b.HasBaseType("Forgettable.Models.Item");
+
+                    b.HasDiscriminator().HasValue("PensionContribution");
+                });
+
             modelBuilder.Entity("Forgettable.Models.Items.PhoneContract", b =>
                 {
                     b.HasBaseType("Forgettable.Models.Item");

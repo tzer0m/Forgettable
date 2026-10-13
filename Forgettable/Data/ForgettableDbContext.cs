@@ -156,6 +156,11 @@ namespace Forgettable.Data
         public DbSet<Mullvad> Mullvads { get; set; }
 
         /// <summary>
+        /// Employer pension contributions.
+        /// </summary>
+        public DbSet<PensionContribution> PensionContributions { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>
