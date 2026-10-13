@@ -27,10 +27,10 @@ namespace Forgettable.Models.Items
         public string PolicyNumber { get; set; } = string.Empty;
 
         /// <summary>
-        /// The date to start comparing quotes, 4 weeks before renewal.
+        /// The date to start comparing quotes, 2 weeks before renewal.
         /// </summary>
         [Display(Name = "Shop Around From")]
-        public DateOnly ShopAroundDate => ExpiryDate.AddDays(-28);
+        public DateOnly ShopAroundDate => ExpiryDate.AddDays(-14);
 
         /// <summary>
         /// Professional insurance is due from the shop around date.
