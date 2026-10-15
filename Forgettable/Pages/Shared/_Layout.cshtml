@@ -26,6 +26,9 @@
                     Forgettable
                 </a>
                 <div class="d-flex gap-2">
+                    <form role="search" method="get" asp-page="/Index">
+                        <input id="search" class="form-control nav-search" type="search" name="q" value="@Context.Request.Query["q"]" placeholder="Search" aria-label="Search" autocomplete="off" />
+                    </form>
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">Add</button>
                         <ul class="dropdown-menu dropdown-menu-end add-menu">

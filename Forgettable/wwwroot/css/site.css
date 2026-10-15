@@ -88,6 +88,10 @@ html {
   font-weight: 600;
 }
 
+.nav-search {
+  width: 12rem;
+}
+
 .site-logo {
   height: 2.25rem;
   width: auto;

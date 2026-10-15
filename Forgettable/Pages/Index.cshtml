@@ -19,7 +19,7 @@
     <tbody>
         @foreach (Item item in Model.Items)
         {
-            <tr id="item-@item.ItemId" role="button" class="@(item.Archived || item.Booked ? "faded" : item.DueDate <= today ? "due" : null)" data-bs-toggle="collapse" data-bs-target="#details-@item.ItemId" aria-expanded="false" aria-controls="details-@item.ItemId">
+            <tr id="item-@item.ItemId" data-item-id="@item.ItemId" data-search="@($"{item.Category} {ItemTypes.GetDisplayName(item.GetType())} {item.Subject}".ToLowerInvariant())" role="button" class="@(item.Archived || item.Booked ? "faded" : item.DueDate <= today ? "due" : null)" data-bs-toggle="collapse" data-bs-target="#details-@item.ItemId" aria-expanded="false" aria-controls="details-@item.ItemId">
                 <td class="d-none d-md-table-cell"><span class="badge category-@item.Category.ToString().ToLower()">@item.Category</span></td>
                 <td><span class="category-dot category-@item.Category.ToString().ToLower() d-md-none" title="@item.Category"></span>@ItemTypes.GetDisplayName(item.GetType())</td>
                 <td>@item.Subject</td>
@@ -33,6 +33,9 @@
                 </td>
             </tr>
         }
+        <tr id="no-matches" hidden>
+            <td colspan="6" class="text-center text-secondary">No Matches</td>
+        </tr>
     </tbody>
 </table>
 
@@ -53,6 +56,25 @@
         document.addEventListener('show.bs.collapse', event => { if (event.target.matches('tr')) { requestAnimationFrame(() => sizeThumbnails(event.target)); } });
         document.addEventListener('load', event => { if (event.target.matches?.('.document-thumbnail')) { sizeThumbnails(event.target.closest('tr')); } }, true);
         window.addEventListener('resize', () => document.querySelectorAll('tr.collapse.show').forEach(sizeThumbnails));
+
+        // Filter items as the search is typed, matching every word against the category, type and subject.
+        const search = document.getElementById('search');
+        function filterItems() {
+            const terms = search.value.trim().toLowerCase().split(/\s+/).filter(x => x);
+            let shown = 0;
+            document.querySelectorAll('tr[data-search]').forEach(row => {
+                const match = terms.every(term => row.dataset.search.includes(term));
+                row.hidden = !match;
+                document.getElementById(`details-${row.dataset.itemId}`).hidden = !match;
+                if (match) {
+                    shown++;
+                }
+            });
+            document.getElementById('no-matches').hidden = shown > 0;
+        }
+        search.addEventListener('input', filterItems);
+        search.form.addEventListener('submit', event => event.preventDefault());
+        filterItems();
 
         // Open the item linked to from a calendar event, e.g. /#item-12.
         const linked = location.hash.match(/^#item-(\d+)$/);
