@@ -31,6 +31,11 @@ namespace Forgettable.Data
         public DbSet<MOT> MOTs { get; set; }
 
         /// <summary>
+        /// CBT certificates.
+        /// </summary>
+        public DbSet<CBT> CBTs { get; set; }
+
+        /// <summary>
         /// Chimney sweeps.
         /// </summary>
         public DbSet<ChimneySweep> ChimneySweeps { get; set; }

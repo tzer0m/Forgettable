@@ -106,6 +106,17 @@ namespace Forgettable.Migrations
                     b.HasDiscriminator().HasValue("BoilerService");
                 });
 
+            modelBuilder.Entity("Forgettable.Models.Items.CBT", b =>
+                {
+                    b.HasBaseType("Forgettable.Models.Item");
+
+                    b.Property<string>("CertificateNumber")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasDiscriminator().HasValue("CBT");
+                });
+
             modelBuilder.Entity("Forgettable.Models.Items.ChimneySweep", b =>
                 {
                     b.HasBaseType("Forgettable.Models.Item");
