@@ -1,6 +1,6 @@
 # Forgettable
 
-[![Deploy](https://github.com/tzer0m/Forgettable/actions/workflows/deploy.yml/badge.svg)](https://github.com/tzer0m/Forgettable/actions/workflows/deploy.yml)
+[![Deploy](https://github.com/tzer0m/Forgettable/actions/workflows/deploy.yml/badge.svg)](https://github.com/tzer0m/Forgettable/actions/workflows/deploy.yml) [![Dependabot](https://github.com/tzer0m/Forgettable/actions/workflows/dependabot/dependabot-updates/badge.svg)](https://github.com/tzer0m/Forgettable/actions/workflows/dependabot/dependabot-updates)
 
 A self-hosted tracker for expiry and renewal dates (MOTs, passports, insurance, contracts), built with ASP.NET Core Razor Pages on .NET 10.
 
