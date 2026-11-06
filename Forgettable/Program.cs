@@ -78,6 +78,7 @@ app.UseAuthorization();
 app.MapStaticAssets().AllowAnonymous();
 app.MapRazorPages().WithStaticAssets();
 app.MapHealthChecks("/health").AllowAnonymous();
+app.MapGet("/api/widget", WidgetEndpoint.GetAsync).AllowAnonymous();
 app.MapGet("/calendar/{token}.ics", CalendarEndpoint.GetAsync).AllowAnonymous();
 app.MapGet("/paperless/thumbnail/{id:int}", async (int id, PaperlessClient paperless) => await paperless.GetThumbnailAsync(id) is byte[] content ? Results.File(content, "image/webp") : Results.NotFound());
 app.Run();
