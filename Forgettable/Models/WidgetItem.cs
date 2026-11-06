@@ -6,11 +6,6 @@ namespace Forgettable.Models
     public class WidgetItem
     {
         /// <summary>
-        /// Who or what the item is for.
-        /// </summary>
-        public string Subject { get; set; } = string.Empty;
-
-        /// <summary>
         /// The item type's friendly name.
         /// </summary>
         public string Type { get; set; } = string.Empty;

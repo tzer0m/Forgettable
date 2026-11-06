@@ -28,7 +28,7 @@ namespace Forgettable.Endpoints
             }
             List<Item> items = await db.Items.AsNoTracking().Where(x => !x.Archived && !x.Booked).ToListAsync(cancellationToken);
             Item? next = items.OrderBy(x => x.DueDate).FirstOrDefault();
-            return Results.Ok(new WidgetResponse { Next = next is null ? null : new WidgetItem { Subject = next.Subject, Type = ItemTypes.GetDisplayName(next.GetType()), DueDate = next.DueDate } });
+            return Results.Ok(new WidgetResponse { Next = next is null ? null : new WidgetItem { Type = ItemTypes.GetDisplayName(next.GetType()), DueDate = next.DueDate } });
         }
     }
 }
