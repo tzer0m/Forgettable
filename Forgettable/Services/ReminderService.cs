@@ -12,7 +12,8 @@ namespace Forgettable.Services
     /// <param name="scopeFactory">Creates a scope for the database context and Ting client on each run.</param>
     /// <param name="options">The reminder settings.</param>
     /// <param name="logger">The logger.</param>
-    public partial class ReminderService(IServiceScopeFactory scopeFactory, IOptions<ReminderOptions> options, ILogger<ReminderService> logger) : BackgroundService
+    /// <param name="configuration">The configuration, used for the site URL opened when the notification is tapped.</param>
+    public partial class ReminderService(IServiceScopeFactory scopeFactory, IOptions<ReminderOptions> options, ILogger<ReminderService> logger, IConfiguration configuration) : BackgroundService
     {
         /// <summary>
         /// Waits until the reminder time each day, then sends the reminder.
@@ -53,7 +54,7 @@ namespace Forgettable.Services
             }
             string title = count == 1 ? "Forgettable: 1 Item Due" : $"Forgettable: {count} Items Due";
             string body = string.Join("\n", due.Select(x => $"{x.Subject} - {ItemTypes.GetDisplayName(x.GetType())}: {Overdue(today.DayNumber - x.DueDate.DayNumber)}"));
-            await ting.SendAsync(title, body);
+            await ting.SendAsync(title, body, configuration["SiteUrl"]);
             LogReminderSent(logger, count);
         }
 
