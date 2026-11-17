@@ -5,13 +5,19 @@
     DateOnly today = DateOnly.FromDateTime(DateTime.Today);
 }
 
+@section HeaderControls {
+    <div class="form-check form-switch date-toggle mb-0" title="Show actual expiry dates instead of due dates">
+        <input class="form-check-input" type="checkbox" role="switch" id="actual-dates" aria-label="Show actual expiry dates" />
+    </div>
+}
+
 <table class="table">
     <thead>
         <tr>
             <th class="d-none d-md-table-cell">Category</th>
             <th>Type</th>
             <th>Subject</th>
-            <th class="d-none d-sm-table-cell">Due</th>
+            <th class="d-none d-sm-table-cell" data-due-text="Due" data-expiry-text="Expiry">Due</th>
             <th><span class="d-md-none" title="Time Left">TL</span><span class="d-none d-md-inline">Time Left</span></th>
             <th><span class="d-md-none" title="Auto Renew">AR</span><span class="d-none d-md-inline">Auto Renew</span></th>
         </tr>
@@ -19,12 +25,14 @@
     <tbody>
         @foreach (Item item in Model.Items)
         {
-            <tr id="item-@item.ItemId" data-item-id="@item.ItemId" data-search="@($"{item.Category} {ItemTypes.GetDisplayName(item.GetType())} {item.Subject}".ToLowerInvariant())" role="button" class="@(item.Archived || item.Booked ? "faded" : item.DueDate <= today ? "due" : null)" data-bs-toggle="collapse" data-bs-target="#details-@item.ItemId" aria-expanded="false" aria-controls="details-@item.ItemId">
+            string? dueClass = item.Archived || item.Booked ? "faded" : item.DueDate <= today ? "due" : null;
+            string? expiryClass = item.Archived || item.Booked ? "faded" : item.ExpiryDate <= today ? "due" : null;
+            <tr id="item-@item.ItemId" data-item-id="@item.ItemId" data-search="@($"{item.Category} {ItemTypes.GetDisplayName(item.GetType())} {item.Subject}".ToLowerInvariant())" data-archived="@(item.Archived ? 1 : 0)" data-due-day="@item.DueDate.DayNumber" data-expiry-day="@item.ExpiryDate.DayNumber" data-due-class="@dueClass" data-expiry-class="@expiryClass" role="button" class="@dueClass" data-bs-toggle="collapse" data-bs-target="#details-@item.ItemId" aria-expanded="false" aria-controls="details-@item.ItemId">
                 <td class="d-none d-md-table-cell"><span class="badge category-@item.Category.ToString().ToLower()">@item.Category</span></td>
                 <td><span class="category-dot category-@item.Category.ToString().ToLower() d-md-none" title="@item.Category"></span>@ItemTypes.GetDisplayName(item.GetType())</td>
                 <td>@item.Subject</td>
-                <td class="d-none d-sm-table-cell">@item.DueDate.ToString("dd MMM yyyy")</td>
-                <td>@(item.Archived ? null : TimeLeft.Describe(item.DueDate))</td>
+                <td class="d-none d-sm-table-cell" data-due-text="@item.DueDate.ToString("dd MMM yyyy")" data-expiry-text="@item.ExpiryDate.ToString("dd MMM yyyy")">@item.DueDate.ToString("dd MMM yyyy")</td>
+                <td data-due-text="@(item.Archived ? null : TimeLeft.Describe(item.DueDate))" data-expiry-text="@(item.Archived ? null : TimeLeft.Describe(item.ExpiryDate))">@(item.Archived ? null : TimeLeft.Describe(item.DueDate))</td>
                 <td>@if (!item.Archived) { <partial name="_YesNo" model="item.AutoRenew" /> }</td>
             </tr>
             <tr class="collapse" id="details-@item.ItemId">
@@ -75,6 +83,34 @@
         search.addEventListener('input', filterItems);
         search.form.addEventListener('submit', event => event.preventDefault());
         filterItems();
+
+        // Swap between the date each item is due and the date it actually expires, re-sorting the rows to match.
+        const actualDates = document.getElementById('actual-dates');
+        const itemRows = [...document.querySelectorAll('tr[data-item-id]')];
+        function showDates() {
+            const mode = actualDates.checked ? 'expiry' : 'due';
+            document.querySelectorAll('[data-due-text]').forEach(x => x.textContent = x.dataset[`${mode}Text`] ?? '');
+            itemRows.forEach(row => {
+                row.classList.remove('faded', 'due');
+                if (row.dataset[`${mode}Class`]) {
+                    row.classList.add(row.dataset[`${mode}Class`]);
+                }
+            });
+            const noMatches = document.getElementById('no-matches');
+            [...itemRows].sort((a, b) => (a.dataset.archived - b.dataset.archived) || (a.dataset[`${mode}Day`] - b.dataset[`${mode}Day`]) || (itemRows.indexOf(a) - itemRows.indexOf(b))).forEach(row => {
+                noMatches.before(row, document.getElementById(`details-${row.dataset.itemId}`));
+            });
+        }
+        try {
+            actualDates.checked = localStorage.getItem('actualDates') === 'true';
+        } catch { }
+        actualDates.addEventListener('change', () => {
+            try {
+                localStorage.setItem('actualDates', actualDates.checked);
+            } catch { }
+            showDates();
+        });
+        showDates();
 
         // Open the item linked to from a calendar event, e.g. /#item-12.
         const linked = location.hash.match(/^#item-(\d+)$/);

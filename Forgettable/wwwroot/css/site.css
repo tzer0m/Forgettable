@@ -213,3 +213,14 @@ tr.due .text-success, tr.due .text-danger {
     display: none;
   }
 }
+
+/* Due/actual dates switch sits beside the buttons on phones and after the search on wider screens. */
+.date-toggle {
+  margin: 0 0.75rem 0 auto;
+}
+
+@media (min-width: 768px) {
+  .date-toggle {
+    margin-left: 0;
+  }
+}
