@@ -166,6 +166,11 @@ namespace Forgettable.Data
         public DbSet<PensionContribution> PensionContributions { get; set; }
 
         /// <summary>
+        /// Quarterly VAT returns.
+        /// </summary>
+        public DbSet<VatReturn> VatReturns { get; set; }
+
+        /// <summary>
         /// Configures the model, storing every item type in one table.
         /// </summary>
         /// <param name="modelBuilder">The model builder.</param>

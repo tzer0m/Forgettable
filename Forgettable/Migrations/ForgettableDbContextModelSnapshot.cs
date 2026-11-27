@@ -17,7 +17,7 @@ namespace Forgettable.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "10.0.12")
+                .HasAnnotation("ProductVersion", "10.0.15")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -394,6 +394,13 @@ namespace Forgettable.Migrations
                         .HasColumnType("text");
 
                     b.HasDiscriminator().HasValue("SslCertificate");
+                });
+
+            modelBuilder.Entity("Forgettable.Models.Items.VatReturn", b =>
+                {
+                    b.HasBaseType("Forgettable.Models.Item");
+
+                    b.HasDiscriminator().HasValue("VatReturn");
                 });
 
             modelBuilder.Entity("Forgettable.Models.Items.VehicleFinance", b =>
